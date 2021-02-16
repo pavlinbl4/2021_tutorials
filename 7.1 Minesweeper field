@@ -1,0 +1,52 @@
+7.1 Minesweeper field
+# ввод данных
+# n, m =map(int, input().split())
+# sea = []
+# for i in range(n):
+#     line = list(input())
+#     sea.append(line)
+#
+# print(sea)
+def find_mine(sea,i,j):
+    # print(f'Danger !! Mine in {i}:{j}')
+    count = 0
+    for x in range(-1,2):
+        for y in range(-1,2):
+            if 0 <= i+x < n and 0 <= j+x < n and 0 <= i+y < m and 0 <= j+y < m:
+                if sea[i+x][j+y] == "*":
+                    count += 1
+    sea[i][j] = count
+
+
+
+
+n = 4
+m = 4
+sea = [['.', '.', '*', '.'], ['*', '*', '.', '.'], ['.', '.', '*', '.'], ['.', '.', '.', '.']]
+# for i in sea:
+#     print(*i)
+
+# прохжу по массиву в поиске полей без мин, нужные поля отправляю на проверку
+for i in range(n):
+    for j in range(m):
+        if sea[i][j] == ".":
+            find_mine(sea,i,j)
+# i = 0
+# j = 0
+# count = 0
+# for x in range(-1,2):
+#     for y in range(-1,2):
+#         if 0 <= i+x <= m and 0 <= j+x <= m and 0 <= i+y <= m and 0 <= j+y <= m:
+#             print(sea[i+x][j+y])
+#             if sea[i+x][j+y] == "*":
+#
+#                 count += 1
+# print(count)
+# sea[i][j] = count
+for i in sea:
+    print(*i)
+
+
+
+
+

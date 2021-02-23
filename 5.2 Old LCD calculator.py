@@ -21,9 +21,16 @@ digit = {0: [line, tt, tt, ey, tt, tt, line],
          9: [line, tt, tt, line, rt,  rt, line]}
 
 print(f"x{'-' * (len(lst)*5-1)}x")
-for i in range(7):
-    print(f"|{digit[lst[0]][i]} {digit[lst[1]][i]} {digit[2][i]}"
-          f"{digit[3][i]} {digit[4][i]} {digit[5][i]}"
-          f"{digit[6][i]} {digit[7][i]} {digit[8][i]}"
-          f"{digit[9][i]}|")
+# for x in range(len(lst)):
+for x in range(len(lst)):
+    for i in range(7):
+
+        print(f"|{ digit[lst[x]][i] }|")
+    # print(f"|{digit[lst[0]][i]} {digit[lst[1]][i]} {digit[2][i]}"
+    #       f"{digit[3][i]} {digit[4][i]} {digit[5][i]}"
+    #       f"{digit[6][i]} {digit[7][i]} {digit[8][i]}"
+    #       f"{digit[9][i]}|")
+    # print(f"|{ digit[lst[0]][i] } |")
+
+
 print(f"x{'-' * (len(lst)*5-1)}x")

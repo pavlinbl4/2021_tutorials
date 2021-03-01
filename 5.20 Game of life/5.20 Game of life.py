@@ -1,3 +1,5 @@
+# https://stepik.org/lesson/22778/step/1?adaptive=true&unit=5351
+
 # ввод информации
 # str, col = map(int, input().split())
 # # col = int(input())

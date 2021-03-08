@@ -1,6 +1,7 @@
 # https://stepik.org/lesson/21306/step/1?adaptive=true&unit=5109
 # n = input()
-lst = list(map( int,list(input())))
+# lst = list(map( int,list(input())))
+lst = [3, 5]
 
 
 line = " -- "
@@ -22,10 +23,12 @@ digit = {0: [line, tt, tt, ey, tt, tt, line],
 
 print(f"x{'-' * (len(lst)*5-1)}x")
 # for x in range(len(lst)):
-for x in range(len(lst)):
-    for i in range(7):
+# for x in range(len(lst)):
+for y in range(7):
+    for x in range(len(lst)):
 
-        print(f"|{ digit[lst[x]][i] }|")
+
+        print(digit[lst[x]][y])
     # print(f"|{digit[lst[0]][i]} {digit[lst[1]][i]} {digit[2][i]}"
     #       f"{digit[3][i]} {digit[4][i]} {digit[5][i]}"
     #       f"{digit[6][i]} {digit[7][i]} {digit[8][i]}"

@@ -24,6 +24,7 @@ try:
         search_input.send_keys(photo_id)
         browser.find_element_by_id("search-submit").click()
         picture = browser.find_element_by_css_selector("#mosaic .zoom img").get_attribute("src")
+        print(picture)
         get_image = requests.get(picture)
         with open(f"images/{photo_id}.jpg", 'wb') as img_file:
             img_file.write(get_image.content)

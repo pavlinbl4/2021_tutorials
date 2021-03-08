@@ -2,21 +2,23 @@
 
 # lst =list(map(int, input().split(" ")))
 # print(lst)
+# lst = [1, 3, 2, 4]
+# lst = []
+lst = [7,2,11]
 
-start = {1, 3, 2, 4}
 
-
-def digits(start, new = None):
-    if len(start) == 0:
-        print({})
-        return
+def digits(lst, rez ):
+    if len(lst) == 0:
+        return {}
+    if len(lst) == 1:
+        return {}, set(lst)
     else:
-        print(start.difference({new}))
-        for i in start:
-            print(start.difference({i}))
-        new = start.pop()
-        print({new})
+        # lst.pop(0)
+        # print(f" lst after pop - {lst}")
+        rez.append(set(lst))
+        rez.append(set(lst[:1]))
+        return  digits(lst[1:],rez)
 
-        digits(start)
 
-digits(start)
+
+print(digits(lst,rez = []))

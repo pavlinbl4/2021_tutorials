@@ -1,7 +1,7 @@
 # https://stepik.org/lesson/22778/step/1?adaptive=true&unit=5351
 
 # ввод информации
-# str, col = map(int, input().split())
+# st, col = map(int, input().split())
 # # col = int(input())
 # table = []
 # for i in range(str):
@@ -14,55 +14,34 @@
 # print("*"*100)
 # print()
 
-# str = 5
-# col = 6
-# table = [['.', '.', '.', 'X', 'X', '.'], ['.', 'X', 'X', '.', '.', '.'], ['.', '.', 'X', '.', '.', '.'], ['X', 'X', '.', '.', '.', '.'], ['X', '.', '.', 'X', 'X', '.']]
-str,col = 2, 2
-table = [['X', 'X'], ['X', 'X']]
+st = 5
+col = 6
+table = [['.', '.', '.', 'X', 'X', '.'], ['.', 'X', 'X', '.', '.', '.'], ['.', '.', 'X', '.', '.', '.'], ['X', 'X', '.', '.', '.', '.'], ['X', '.', '.', 'X', 'X', '.']]
+# Точка "." обозначает мёртвую клетку, символ "X" − живую.
 
-def dead(table,i,j,count):
-    if count == 3:
-        table[i][j] = 'X'
-def live(table, i, j,count):
-    if count < 2 or count > 3:
-        table[i][j] = '.'
+"""Распределение живых клеток в начале игры называется первым поколением. 
+Каждое следующее поколение рассчитывается на основе предыдущего по таким правилам:
+в пустой (мёртвой) клетке, рядом с которой ровно три живые клетки, зарождается жизнь;
+если у живой клетки есть две или три живые соседки, то эта клетка продолжает жить;
+в противном случае, если соседей меньше двух или больше трёх,
+клетка умирает («от одиночества» или «от перенаселённости»)"""
 
 
-def test(table,i,j):
+def test(table, i, j):
     count = 0
-    for x in range(-1,2):
-        for y in range(-1,2):
-            new_str = i + x
-            new_col = j + y
-            if new_str == -1:
-                new_str = str-1
-            if new_str == str:
-                new_str = 0
-            if new_col == -1:
-                new_col = col-1
-            if new_col == col:
-                new_col = 0
-            if table[new_str][new_col] == ".":
+    for x in range(-i, i+2):
+        for y in range(-i, i+2):
+            print(f'{table[x%col][y%st]} -> {x%col} -> {y%st}')
+            if table[i][j] == table[x%col][y%st]:
                 count += 1
-
-    if table[i][j] == "X":
-        live(table, i, j,count)
-    else:
-        dead(table, i, j,count)
-
-    print(f"test block {i}:{j}")
-    for w in table:
-        print(w)
-    print("-"*40)
+    print(f"count = {count}")
+    return count
 
 
 
-
-for i in range(str):
-    for j in range(col):
-            test(table,i,j)
-
-
-# for i in table:
-#     print(i)
+for i in range(1):#st
+    # print()
+    for j in range(1):#col
+        test(table, i, j)
+        print(f" {table[i][j]} -> i ={i}, j = {j} ")
 

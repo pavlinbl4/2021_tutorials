@@ -1,5 +1,11 @@
 def condition1(a):
-    print(a + 1 if a > 0 else a)
+    # if a > 0:
+    #     a += 1
+    # print(a)
+
+    # a = a + 1 if a > 0 else a
+    a += a > 0
+    print(a)
 
 
 # condition1(5)
@@ -16,18 +22,17 @@ def condition2(a):
 # condition2(-1)
 
 
-def condition3(a):  # долго не получался синтаксис тернального оператора
+def condition3(a):  # долго не получался синтаксис -  тернарный оператор
     # print(a + 1 if a > 0 else a - 2 if a == 0 else 10)
     print(a + 1 if a > 0 else a - 2 if a < 0 else 10)
 
 
-#
 # condition3(5)
 # condition3(0)
 # condition3(-1)
 
 
-def condition4(a, b):  # нужнои и можно ли использовать тернальный оператор ?
+def condition4(a, b):  # нужнои и можно ли использовать тернарный оператор ?
     if a % 2 == 0:
         a += b
     else:
@@ -79,9 +84,18 @@ def condition7(a, b, c):
     # else:
     #     maxd = c
     # print(maxd)
-    if a < b: a, b = b, a
-    if a < c: a, c = c, a
-    print(a)
+
+    # if a < b:
+    #     a, b = b, a
+    # if a < c:
+    #     a, c = c, a
+
+    m = a
+    if b > m:
+        m = b
+    if c > m:
+        m = c
+    print(m)
 
 
 # condition7(5, 8, 2)
@@ -89,13 +103,12 @@ def condition7(a, b, c):
 # condition7(7, 7, 2)
 
 
-
 def condition8(a, b, c):
-    if a >= b:
+    if a > b:
         a, b = b, a
-    if b >= c:
+    if b > c:
         b, c = c, b
-    if a >= b:
+    if a > b:
         a, b = b, a
     print(a, b, c)
 
@@ -106,9 +119,12 @@ def condition8(a, b, c):
 
 
 def condition9(a, b, c):
-    if a <= b: a, b = b, a
-    if b <= c: b, c = c, b
-    if a <= b: a, b = b, a
+    if a < b:
+        a, b = b, a
+    if b < c:
+        b, c = c, b
+    if a < b:
+        a, b = b, a
     print(a, b, c)
 
 
@@ -118,12 +134,20 @@ def condition9(a, b, c):
 
 
 def condition10(a, b, c):
-    if a >= b and a >= c:
-        print(1)
-    elif b >= c and b >= a:
-        print(2)
-    elif c >= a and c >= b:
-        print(3)
+    # if a >= b and a >= c:
+    #     print(1)
+    # elif b >= c and b >= a:
+    #     print(2)
+    # elif c >= a and c >= b:
+    #     print(3)
+    m = a
+    numb = 1
+    if b > m:
+        m = b
+        numb = 2
+    if c > m:
+        numb = 3
+    print(numb)
 
 
 # condition10(5, 8, 2)
@@ -132,9 +156,12 @@ def condition10(a, b, c):
 
 
 def condition11(a, b, c):
-    if a > b: a, b = b, a
-    if a > c: a, c = c, a
-    if b > c: b, c = c, b
+    if a > b:
+        a, b = b, a
+    if a > c:
+        a, c = c, a
+    if b > c:
+        b, c = c, b
     print(c - a)
 
 
@@ -144,14 +171,18 @@ def condition11(a, b, c):
 
 
 def condition13(a, b, c):
-    if (a + b + c) % 2 != 0:
-        a *= 2
-        b *= 2
-        c *= 2
-    else:
-        a *= -1
-        b *= -1
-        c *= -1
+    # if (a + b + c) % 2 != 0:
+    #     a *= 2
+    #     b *= 2
+    #     c *= 2
+    # else:
+    #     a *= -1
+    #     b *= -1
+    #     c *= -1
+    q = 2 if (a + b + c) % 2 != 0 else -1
+    a *= q
+    b *= q
+    c *= q
     print(a, b, c)
 
 
@@ -161,28 +192,46 @@ def condition13(a, b, c):
 
 
 def condition14(a, b, c):
-    if a % 10 == 4 or b % 10 == 4 or c % 10 == 4:
-        if a > b: a, b = b, a
-        if b > c: c, b = b, c
-        print(c)
+    # if a % 10 == 4 or b % 10 == 4 or c % 10 == 4:
+    #     if a > b:
+    #         a, b = b, a
+    #     if b > c:
+    #         c, b = b, c
+    #     print(c)
+    # else:
+    #     m = a
+    #     if a > b:
+    #         m = b
+    #     if c < m:
+    #         m = c
+    #     print(m)
+    m = a
+    if a % 10 == 4 and b % 10 == 4 and c % 10 == 4:
+        if b > m:
+            m = b
+        if c > m:
+            m = c
     else:
-        if a > b: a,b = b, c
-        print(a)
+        if b < m:
+            m = b
+        if c < m:
+            m = c
+    print(m)
 
 
-# condition14(3, 4, 5)
-# condition14(5, 6, 7)
-# condition14(4, 24, 14)
+condition14(3, 4, 5)
+condition14(5, 6, 7)
+condition14(4, 24, 14)
+condition14(7, 5, 3)
 
 
 def condition15(a, b, c):
     if a + b == c:
         print(f'{a} + {b} = {c}')
+    elif a - b == c:
+        print(f'{a} - {b} = {c}')
     else:
-        if a - b == c:
-            print(f'{a} - {b} = {c}')
-        else:
-            print(f'{a} + {b} = {a + b}, {a} - {b} = {a - b}')
+        print(f'{a} + {b} = {a + b}, {a} - {b} = {a - b}')
 
 
 # condition15(10, 20, 30)
@@ -199,8 +248,10 @@ def condition16(a, b):
 # condition16(10, 10)
 
 
-def condition17(a,b):
-    print(abs(a - b) if a != b else 0)
+def condition17(a, b):
+    # print(abs(a - b) if a != b else 0)
+    # print(abs(a - b))
+    print(a - b if a > b else b - a)
 
 
 # condition17(20, 15)
@@ -209,7 +260,7 @@ def condition17(a,b):
 
 
 def condition18(a, b):
-    print("YES" if (a - b) ** 2 >= 4 else "NO")
+    print("YES" if a - b >= 2 or b - a >= 2 else "NO")
 
 
 # condition18(20, 15)
@@ -221,7 +272,8 @@ def condition18(a, b):
 def condition19(v, p):
     if v == p:
         print("ничья")
-    elif v == "k" and p == "n" or v == "n" and p == "b" or v == "b" and p == "k":
+    # elif v == "k" and p == "n" or v == "n" and p == "b" or v == "b" and p == "k":
+    elif v + p in ("kn", "nb", "bk"):
         print("Вася")
     else:
         print("Петя")
@@ -234,17 +286,25 @@ def condition19(v, p):
 
 
 def condition20(r, m, s):
-    if m + s > r and r >= m and r >= s:
-        print("мороженое")
-    elif m + s > r and r < m and r >= s:
+    # if m + s > r and r >= m and r >= s:
+    #     print("мороженое")
+    # elif m + s > r and r < m and r >= s:
+    #     print("шоколад")
+    # elif r < m and r < s:
+    #     print("ничего")
+    # elif m + s <= r:
+    #     print("и то, и другое")
+    if r >= m + s:
+        print('и то, и другое')
+    elif r >= m:
+        print('мороженое')
+    elif r >= s:
         print("шоколад")
-    elif r < m and r < s:
+    else:
         print("ничего")
-    elif m + s <= r:
-        print("и то, и другое")
 
 
-condition20(100, 30, 40)
-condition20(100, 50, 100)
-condition20(100, 120, 100)
-condition20(100, 120, 120)
+# condition20(100, 30, 40)
+# condition20(100, 50, 100)
+# condition20(100, 120, 100)
+# condition20(100, 120, 120)

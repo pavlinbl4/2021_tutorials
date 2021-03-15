@@ -1,6 +1,6 @@
 import timeit
 start_time = timeit.default_timer()
-arr = [5, 2, 9, 5, 7, 1]
+arr = [4, 2, 9, 3, 7, 1, 0, 77, 5]
 
 
 for i in range(len(arr) - 1):

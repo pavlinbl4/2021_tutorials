@@ -29,7 +29,7 @@ def begin4(a):
 # begin4(5)
 # begin4(10)
 
-def begin5(a, b):     # home work
+def begin5(a, b):  # home work
     print((a + b) / 2)
 
 
@@ -137,15 +137,16 @@ def begin15(d):
 
 
 def begin16(d):  # home work  !!!!!!
-    print(d % 7 + 1)
-
-begin16(0)
-begin16(3)
-begin16(6)  # если 6 дней назад был вторник, то сегодня понедельник ?
-begin16(29)
+    print((d + 1) % 7)
 
 
-def begin17(d):         # home work (как то туго пошло)
+# begin16(0)
+# begin16(3)
+# begin16(6)  # если 6 дней назад был вторник, то сегодня понедельник ?
+# begin16(29)
+
+
+def begin17(d):  # home work (как то туго пошло)
     print(d % 7)
 
 
@@ -155,7 +156,7 @@ def begin17(d):         # home work (как то туго пошло)
 # begin17(29)
 
 
-def begin18(d):         # home work
+def begin18(d):  # home work
     print(d % 7 + 1)
 
 
@@ -163,7 +164,6 @@ def begin18(d):         # home work
 # begin18(6)
 # begin18(7)
 # begin18(29)
-
 
 
 def begin19(a):
@@ -174,8 +174,10 @@ def begin19(a):
 # begin19(91)
 
 
-def begin20(a):         # home work
-    print(a % 10 + a // 10, (a % 10) * (a // 10))
+def begin20(a):  # home work
+    b = a % 10
+    c = a // 10
+    print(b + c, b * c)
 
 
 # begin20(27)
@@ -192,7 +194,7 @@ def begin21(a):
 # begin21(10)
 
 
-def begin22(a):         # home work
+def begin22(a):  # home work
     print(a % 2 + 1)
 
 
@@ -202,8 +204,10 @@ def begin22(a):         # home work
 # begin22(10)
 
 
-def begin23(a):         # home work
-    print((a + 1) % 2)
+# x - 0 = 1
+# x - 1 = 0
+def begin23(a):  # home work
+    print(1 - a % 2)
 
 
 # begin23(0)
@@ -212,8 +216,8 @@ def begin23(a):         # home work
 # begin23(10)
 
 
-def begin24(a):         # home work
-    print((a + 1) % 2 + 1)
+def begin24(a):  # home work
+    print(2 - a % 2)
 
 
 # begin24(0)
@@ -221,13 +225,11 @@ def begin24(a):         # home work
 # begin24(5)
 # begin24(10)
 
+
 def begin25(n):
     print((n - 1) % 3)
-
 
 # begin25(1)
 # begin25(3)
 # begin25(5)
 # begin25(10)
-
-

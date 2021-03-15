@@ -20,7 +20,11 @@ headers = {
     "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4200.0 Iron Safari/537.36"
 }
 
-#print("ENTER NUMBER OF PAGES") # запрашиваю сколько страниц хочу отпарсить  НАДО АВТОМАТИЗИРОВАТЬ, ЧТОБ НЕ ВЫХОДИЛО ЗА ПРЕДЕЛ МЕСЯЦА
+print("ENTER NUMBER OF MONTH")
+month = str(input())
+if len(month) < 2:
+    month = '0'+month
+
 number_pages = 3 #int(input())
 
 os.makedirs("pages",exist_ok=True) # создаю папку для сохранения страниц, если папка есть, то она остается
@@ -35,14 +39,6 @@ for x in range(1,number_pages + 1): # цикл проходит по стран�
     url = f"https://newprospect.ru/?PAGEN_1={x}"
     req = requests.get(url, headers=headers)
     src = req.text
-#модуль сохраняющий html страницы для тестирования
-
-    # with open(f"pages/index_{x}.html", "w") as file: # сохраняем страницы для  работы
-    #     file.write(src)
-
-
-    # with open(f"pages/index_{x}.html", "r") as file: # открываю файл для обработки
-    #     src = file.read()
 
     soup = BeautifulSoup(src, 'lxml')
 
@@ -55,20 +51,19 @@ for x in range(1,number_pages + 1): # цикл проходит по стран�
 
     for i in range(len(articles_date) - 1, -1, -1):   # в этом цикле перебираем наши списки с названием датой и ссылкой на фото
         count += 1
-        print(articles_date[i].text)
-        print(articles_title[i].text)
-        print("https://newprospect.ru" + image_links[i].get("src"))
-        os.makedirs(f"folders_NP", exist_ok=True)
-        # os.makedirs(f"folders_NP/{date_convert(articles_date[i].text)}/{articles_title[i].text}", exist_ok=True) # создаю папку для сохранения снимка
-        r = requests.get("https://newprospect.ru" + image_links[i].get("src"), stream=True)
-        # with open(f"folders_NP/{articles_date[i].text}/{articles_title[i].text}/photo.JPG", "bw") as f:
-        # with open(f"folders_NP/{date_convert(articles_date[i].text)}/{articles_title[i].text}/photo.JPG","bw") as f:# это рабочий код - хочу менять имена файлов
-        with open(f"folders_NP/{date_convert(articles_date[i].text)}__{articles_title[i].text}.JPG", "bw") as f:
-            for chunk in r.iter_content(9000):
-                f.write(chunk)
-        articles_dict.setdefault("Date",[]).append(date_convert(articles_date[i].text))
-        articles_dict.setdefault("Title",[]).append(articles_title[i].text)
-        articles_dict.setdefault("Links", []).append("https://newprospect.ru" + image_links[i].get("src"))
+        if f"2021-{month}" in date_convert(articles_date[i].text): # создаю фильтр для отсечения прошлого масяца
+
+            # print(articles_date[i].text)
+            # print(articles_title[i].text)
+            # print("https://newprospect.ru" + image_links[i].get("src"))
+            os.makedirs(f"folders_NP", exist_ok=True)
+            r = requests.get("https://newprospect.ru" + image_links[i].get("src"), stream=True)
+            with open(f"folders_NP/{date_convert(articles_date[i].text)}__{articles_title[i].text}.JPG", "bw") as f:
+                for chunk in r.iter_content(9000):
+                    f.write(chunk)
+            articles_dict.setdefault("Date",[]).append(date_convert(articles_date[i].text))
+            articles_dict.setdefault("Title",[]).append(articles_title[i].text)
+            articles_dict.setdefault("Links", []).append("https://newprospect.ru" + image_links[i].get("src"))
     for i in range(len(articles_dict["Date"])):
         print(articles_dict["Date"][i],articles_dict["Title"][i])
     df = pd.DataFrame(articles_dict)

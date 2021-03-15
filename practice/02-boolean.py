@@ -86,13 +86,12 @@ def boolean10(a, b, c):
     print(a < b < c or c < b < a)
 
 
-
 # boolean10(5, 10, 11)
 # boolean10(11, 10, 5)
 # boolean10(11, 10, 10)
 
 
-def  boolean11(a):
+def boolean11(a):
     print(9 < a < 100)
 
 
@@ -102,7 +101,8 @@ def  boolean11(a):
 
 
 def boolean12(a):
-    print(a % 2 != 0 and 99 < a < 1000  or 9 < a < 100 and a % 2 == 0)
+    print(a % 2 != 0 and 99 < a < 1000 or 9 < a < 100 and a % 2 == 0)
+
 
 # boolean12(8)
 # boolean12(9)
@@ -121,13 +121,14 @@ def boolean13(a):
     a1 = a // 1000
     print(a1 == a4 and a2 == a3)
 
+
 # boolean13(1001)
 # boolean13(9999)
 # boolean13(1233)
 
 
 def boolean14(n):
-    print(n % 4 == 0 and n % 100 != 0 or n % 100 == 0 and n % 400 == 0)
+    print(n % 4 == 0 and n % 100 != 0 or n % 400 == 0)
 
 
 # boolean14(2020)
@@ -137,13 +138,10 @@ def boolean14(n):
 # boolean14(1900)
 
 
-def boolean15(a,b,c):
+def boolean15(a, b, c):
     print(a + b > c and a + c > b and c + b > a)
-
 
 # boolean15(1, 1, 1)
 # boolean15(3, 4, 5)
 # boolean15(1, 2, 3)
 # boolean15(7, 3, 3)
-
-

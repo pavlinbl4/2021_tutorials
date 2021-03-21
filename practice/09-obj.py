@@ -134,7 +134,7 @@ def obj9(a, keys):
 а значениями числа n. Выведите объект.'''
 
 
-def obj10(n): # исходя из примеров ответа ключами должны быть строки ?
+def obj10(n):  # исходя из примеров ответа ключами должны быть строки ?
     print({str(i): n for i in range(n)})
     # voc = {i: n for i in range(n)}
     # voc = {str(i): n for i in range(n)}
@@ -166,10 +166,8 @@ def obj11(n):
 
 
 def obj12(s):
-    voc = {i:ord(i) for i in s}
+    voc = {i: ord(i) for i in s}
     print(voc)
-
-
 
 
 # obj12('')  # {}
@@ -184,7 +182,7 @@ def obj12(s):
 def obj13(s):
     # print(list(set(s))) # проще через множество
     answer = []
-    voc = {i:None for i in s}
+    voc = {i: None for i in s}
     for key in voc.keys():
         answer += [key]
     print(answer)
@@ -233,8 +231,6 @@ def obj16(d):
     print({d[key]: key for key in d.keys()})
 
 
-
-
 # obj16({'a': 'x', 'b': 'y', 'c': 'z'})  # {'x': 'a', 'y': 'b', 'z': 'c'}
 # obj16({'a': 'a', 'b': 'b', 'c': 'c'})  # {'a': 'a', 'b': 'b', 'c': 'c'}
 # obj16({'a': 'a', 'b': 'a', 'c': 'a'})  # {'a': 'c'}
@@ -267,7 +263,6 @@ def obj18(d):
     print(max(arr), sum(arr))
 
 
-
 # obj18({'a': 5, 'b': 7, 'c': 3})  # 7 15
 # obj18({'a': -3,'b': -5, 'c': -1})  # -1 -9
 # obj18({'a': 10, 'a': 20, 'a': -3})  # -3 -3
@@ -282,15 +277,43 @@ def obj19(d):
 
 obj19({'a': 5, 'b': 7, 'c': 3})  # 
 obj19({'a': -3, 'b': -5, 'c': -1})  # 
-obj19({'a': 10, 'b': 20, 'b': 10})  #
+obj19({'a': 10, 'b': 20, 'b': 10})  # одинаковые ключи в словаре
 
-'''Дан массив вида [['key1', 'value1'], ['key2', 'value2']...]. Создайте из него объект вида {key1: 'value1', key2: 'value2'...}.'''
+'''Дан массив вида [['key1', 'value1'], ['key2', 'value2']...]. 
+Создайте из него объект вида {key1: 'value1', key2: 'value2'...}.'''
 
 
-def obj20():
+def obj20(a):
     pass
 
 
-obj20([{name: 'a', value: 'b'}, {name: 'c', value: 'd'}])  # {a: 'b', c: 'd'}
-obj20([{name: 'a', value: 'b'}, {name: 'a', value: 'c'}])  # {a: 'c'}
-obj20({key1: 'value1', key2: 'value2'})  # ['key1', 'value1', 'key2', 'value2']
+obj20([['key1', 'value1'], ['key2', 'value2']])  #
+obj20([['a', 'b'], ['c', 'd']])  #
+obj20([['a', 'b'], ['a', 'c'], ['a', 'd']])  #
+
+
+def obj21(a, b):
+    pass
+
+
+obj21(['key1', 'key2'], ['value1', 'value2'])
+obj21(['a', 'b'], ['c', 'd'])
+obj21(['a', 'a', 'a'], ['b', 'c', 'd'])
+
+
+def obj22(a):
+    pass
+
+
+obj22([{'name': 'key1', 'value': 'value1'}, {'name': 'key2', 'value': 'value2'}])
+obj22([{'name': 'a', 'value': 'b'}, {'name': 'c', 'value': 'd'}])
+obj22([{'name': 'a', 'value': 'b'}, {'name': 'a', 'value': 'c'}])
+
+
+def obj23(a):
+    pass
+
+
+obj23({'key1': 'value1', 'key2': 'value2'})
+obj23({'a': 'b', 'c': 'd'})
+obj23({'a': 'b', 'a': 'c'})

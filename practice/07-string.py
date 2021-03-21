@@ -1,250 +1,391 @@
-def string1():
-    pass
+'''Дана строка s.
+Выведите первый и последний символ из этой строки.'''
 
 
-string1()
-string1()
-string1()
+def string1(s):
+    print(s[0], s[-1])
 
 
-def string2():
-    pass
+# string1('qwerty')  # q y
+# string1('test')  # t t
+# string1('a')  # a a
 
+'''Дана строка s. 
+Выведите true, если она начинается с подстроки 'Hello' (без кавычек), иначе false.'''
 
-string2()
-string2()
-string2()
 
+def string2(s):
+    print("Hello" in s[:6])
 
-def string3():
-    pass
 
+# string2('Hello, world!')  # true
+# string2('Test Hello')  # false
+# string2('Helo')  # false
 
-string3()
-string3()
-string3()
+'''Дана строка s. 
+Выведите true, если она заканчивается на подстроку 'end.' (без кавычек), иначе false.'''
 
 
-def string4():
-    pass
+def string3(s):
+    print("end." in s[-4:])
 
 
-string4()
-string4()
-string4()
+# string3('End of string.')  # false
+# string3('This is the end.')  # true
+# string3('This is the end')  # false
 
+'''Дана строка s. 
+Выведите true, если она содержит подстроку 'middle', иначе false.'''
 
-def string5():
-    pass
 
+def string4(s):
+    print("middle" in s)
 
-string5()
-string5()
-string5()
 
+# string4('Middle.')  # false
+# string4('middle is here')  # true
+# string4('String has a middle.')  # true
 
-def string6():
-    pass
+'''Дана строка s, содержащая пробелы в начале и в конце. 
+Выведите эту строку без начальных и конечных пробелов.'''
 
 
-string6()
-string6()
-string6()
+def string5(s):
+    print(s.strip())
 
 
-def string7():
-    pass
+# string5(' test ')  # test
+# string5('  a   b')  # a   b
+# string5('word1   word2   ')  # word1   word2
 
+'''Дана строка s. 
+Выведите эту строку в верхнем регистре (все буквы заглавные).'''
 
-string7()
-string7()
-string7()
 
+def string6(s):
+    print(s.upper())
 
-def string8():
-    pass
 
+# string6('test')  # TEST
+# string6('StRinG')  # STRING
+# string6('1234, abc')  # 1234, ABC
 
-string8()
-string8()
-string8()
+'''Дана строка s. 
+Выведите эту строку в нижнем регистре (все буквы строчные).'''
 
 
-def string9():
-    pass
+def string7(s):
+    print(s.lower())
 
 
-string9()
-string9()
-string9()
+# string7('test')  # test
+# string7('StRinG')  # string
+# string7('1234, Abc')  # 1234, abc
 
+'''Дана строка s, содержащая подстроку 'sub'. 
+Выведите индекс первого вхождения подстроки 'sub'.'''
 
-def string10():
-    pass
 
+def string8(s):
+    # print(s.index("sub"))
+    print(s.find("sub"))
 
-string10()
-string10()
-string10()
 
+# string8('sub')  # 0
+# string8('test sub')  # 5
+# string8('susubsub')  # 2
 
-def string11():
-    pass
 
+'''Дана строка s, содержащая подстроку 'sub'. 
+Выведите индекс последнего вхождения подстроки 'sub'.'''
 
-string11()
-string11()
-string11()
 
+def string9(s):
+    print(s.rfind("sub"))
 
-def string12():
-    pass
 
+# string9('sub')  # 0
+# string9('test sub')  # 5
+# string9('susubsub')  # 5
 
-string12()
-string12()
-string12()
+'''Дана строка s и число n. 
+Выведите строку, содержащую исходную строку n раз.'''
 
 
-def string13():
-    pass
+def string10(s, n):
+    print(s * n)
 
 
-string13()
-string13()
-string13()
+# string10('a', 3)  # aaa
+# string10('123', 2)  # 123123
+# string10('qwerty', 0)  #
 
+'''Дана строка s. 
+Выведите только вторую половину строки (вместе с центральным символом, если длина нечётная).'''
 
-def string14():
-    pass
 
+def string11(s):
+    print(s[len(s) // 2:])
 
-string14()
-string14()
-string14()
 
+# string11('abc')  # bc
+# string11('abcd')  # cd
+# string11('qwert')  # ert
 
-def string15():
-    pass
+'''Дана строка s. 
+Выведите только первую половину строки (без центрального символа, если длина нечётная).'''
 
 
-string15()
-string15()
-string15()
+def string12(s):
+    print(s[:len(s) // 2])
 
 
-def string16():
-    pass
+# string12('abc')  # a
+# string12('abcdefg')  # abc
+# string12('1')  #
 
+'''Дан символ c и строка s. 
+Выведите строку с удвоенным первым вхождением символа c в строку s.'''
 
-string16()
-string16()
-string16()
 
+def string13(c, s):
+    inx = s.find(c)
+    if inx >= 0:
+        print(f"{s[:inx]}{c}{s[inx:]}")
+        return
+    print(s)
 
-def string17():
-    pass
 
+# string13('b', 'abcabc')  # abbcabc
+# string13('t', 'test')  # ttest
+# string13('q', '1234')  # 1234
 
-string17()
-string17()
-string17()
+'''Дан символ c и строки s, s0. 
+Перед первым вхождением символа c в строку s вставить строку s0.'''
 
 
-def string18():
-    pass
+def string14(c, s, s0):
+    inx = s.find(c)
+    if inx >= 0:
+        # print(f"{s[:inx]}{s0}{s[inx:]}")
+        print(s[:inx] + s0 + s[inx:])
+        return
+    print(s)
 
 
-string18()
-string18()
-string18()
+# string14('b', 'abcabc', '#')  # a#bcabc
+# string14('t', 'test', '$$')  # $$test
+# string14('q', '1234', 'abc')  # 1234
 
+'''Дан символ c и строки s, s0. 
+После первого вхождения символа c в строку s вставить строку s0.'''
 
-def string19():
-    pass
 
+def string15(c, s, s0):
+    # inx = s.find(c)
+    # if inx >= 0:
+    #     print(s[:(inx + 1)] + s0 + s[(inx + 1):])
+    #     return
+    # print(s)
+    inx = s.find(c) + 1
+    if inx >= 0:
+        print(s[:inx] + s0 + s[inx:])
+        return
+    print(s)
 
-string19()
-string19()
-string19()
 
+# string15('b', 'abcabc', '#')  # ab#cabc
+# string15('t', 'test', '$$')  # t$$est
+# string15('q', '1234', 'abc')  # 1234
 
-def string20():
-    pass
+'''Даны строки s и s0. 
+Проверить, содержится ли строка s0 в строке s. Если содержится, то вывести true, если не содержится, то вывести false.'''
 
 
-string20()
-string20()
-string20()
+def string16(s, s0):
+    print(s0 in s)
 
 
-def string21():
-    pass
+# string16('abcabc', 'bc')  # true
+# string16('test', 'test')  # true
+# string16('1234', 'abc')  # false
 
+'''Даны строки s и s0. 
+Удалить из строки s первое вхождение s0.'''
 
-string21()
-string21()
-string21()
 
+def string17(s, s0):
+    inx = s.find(s0)
+    if inx >= 0:
+        print(s[:inx] + s[(inx + len(s0)):])
+        return
+    print(s)
 
-def string22():
-    pass
 
+# string17('abcabc', 'bc')  # aabc
+# string17('test', 'test')  #
+# string17('1234', 'abc')  # 1234
 
-string22()
-string22()
-string22()
+'''Даны строки s, s0 и s1. 
+Заменить в строке s первое вхождение строки s0 на строку s1.'''
 
 
-def string23():
-    pass
+def string18(s, s0, s1):
+    inx = s.find(s0)
+    if inx >= 0:
+        print(s[:inx] + s1 + s[(inx + len(s0)):])
+        return
+    print(s)
 
 
-string23()
-string23()
-string23()
+# string18('abcabc', 'bc', 'BC')  # aBCabc
+# string18('test', 'test', 'xyz')  # xyz
+# string18('1234', 'abc', 'qwe')  # 1234
 
+'''Дана строка s, и числа m и n (0 <= m <= n < |s|). 
+Выведите подстроку, содержащую символы строки s начиная с индекса m (включительно) до  индекса n (не включительно).'''
 
-def string24():
-    pass
 
+def string19(s, m, n):
+    print(s[m:n])
 
-string24()
-string24()
-string24()
 
+# string19('abcabc', 2, 5)  # cab
+# string19('test', 0, 4)  # test
+# string19('1234', 2, 2)  #
 
-def string25():
-    pass
+'''Дана строка s, содержащая один или более пробелов. 
+Вывести подстроку, расположенную между первым и последним пробелом. 
+Если s содержит только один пробел, то вывести пустую строку.'''
 
 
-string25()
-string25()
-string25()
+def string20(s):
+    if s.count(" ") > 1:
+        s1 = s.find(" ") + 1
+        s2 = s.rfind(" ")
+        print(s[s1:s2])
+        return
+    print()
 
 
-def string26():
-    pass
+# string20('abc abc')  #
+# string20('test abc qwe xyz')  # abc qwe
+# string20('1234   5 678')  # 5
 
+'''Даны строка s и целое число n. 
+Выведите строку длины n: если длина s больше n, то вывести последние n символов из s, 
+а если меньше, то заполнить недостающие символы точками ('.') в начале.'''
 
-string26()
-string26()
-string26()
 
+def string21(s, n):
+    if len(s) > n:
+        print(s[n:])
+        return
+    print("." * (n - len(s)) + s)
 
-def string27():
-    pass
 
+# string21('abc xyz', 3)  # xyz
+# string21('abc', 7)  # ....abc
+# string21('1234', 4)  # 1234
 
-string27()
-string27()
-string27()
+'''Даны числа n1 и n2 и строки s1 и s2. 
+Получить из этих строк новую строку, содержащую первые n1 символов строки s1 и последние n2 символов строки s2.'''
 
 
-def string28():
-    pass
+def string22(n1, n2, s1, s2):
+    print(s1[:n1] + s2[-n2:])
 
 
-string28()
-string28()
-string28()
+# string22(3, 5, 'aaabbb', 'cccddd')  # aaaccddd
+# string22(1, 1, '123', '456')  # 16
+# string22(8, 5, 'I love cats', 'coding')  # I love coding
+
+'''Дана строка s, состоящая из слов, разделённых одиночными пробелами. 
+Выведите количество слов, которые начинаются с заглавной буквы.'''
+
+
+def string23(s):
+    count = 0
+    words = s.split()
+    for i in words:
+        if i[0].isupper():
+            count += 1
+    print(count)
+
+
+# string23('Hello, world')  # 1
+# string23('John Smith')  # 2
+# string23('JohnSmith')  # 1
+
+'''Дана строка s, состоящая из целых чисел, разделённых одиночными пробелами. 
+Выведите сумму этих чисел.'''
+
+
+def string24(s):
+    digits = list(map(int, s.split()))
+    s = 0
+    for i in digits:
+        s += i
+    print(s)
+
+
+# string24('10 20 30')  # 60
+# string24('-1 2 -3')  # -2
+# string24('0 0 10 -5 -5')  # 0
+
+'''Дан строковый массив a. 
+Объедините все элементы массива в одну строку, используя '; ' как разделитель.'''
+
+
+def string25(a):
+    print("; ".join(a))
+
+
+# string25(['abc', 'qwe', 'asd'])  # abc; qwe; asd
+# string25(['test'])  # test
+# string25([])  #
+
+'''Дана строка s, состоящая из слов, разделённых одиночными пробелами. 
+Если среди слов нет слова 'class', то добавить его в конец списка слов. Вывести все слова через пробел.'''
+
+
+def string26(s):
+    arr = s.split()
+    if 'class' in arr:
+        print(*arr)
+        return
+    arr = arr + ['class']
+    print(*arr)
+
+
+# string26('cclass classs')  # cclass classs class
+# string26('class')  # class
+# string26('')  # class
+
+'''Дана строка s, состоящая из слов, разделённых одиночными пробелами. 
+Если среди слов есть слово (одно или несколько) 'class', то удалить его. Вывести все слова через пробел.'''
+
+
+def string27(s):
+    arr = s.split()
+    while 'class' in arr:
+        arr.remove("class")
+    print(*arr)
+
+
+# string27('cclass classs')  # cclass classs
+# string27('class')  #
+# string27('class test class')  # test
+
+'''Дана строка s, содержащая путь к файлу. 
+Вывести расширение файла и его имя.'''
+
+
+def string28(s):
+    ind = s.rfind("/") + 1
+    print(*s[ind:].split("."))
+
+
+string28('/var/www/index.html')  # html index
+string28('/var/log/log.01.tar.gz')  # gz log.01.tar
+string28('Zadachi na stroki.js')  # js Zadachi na stroki

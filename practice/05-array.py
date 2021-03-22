@@ -719,9 +719,17 @@ def array49(a, n):
 
 
 def array50(a, b):
-    print(a + b)
+    # print(a + b)
+    ln = len(a) + len(b)
+    c = [0] * ln
+    for i in range(ln):
+        if i < len(a):
+            c[i] = a[i]
+        else:
+            c[i] = b[i - len(a)]
+    print(c)
 
 
-# array50([1], [2])
-# array50([1, 2], [3])
-# array50([9, 8], [9, 8, 7])
+array50([1], [2])
+array50([1, 2], [3])
+array50([9, 8], [9, 8, 7])

@@ -20,9 +20,9 @@ try:
         src = file.read()
     soup = BeautifulSoup(src, 'lxml')
 
-    task_names = soup.select("#collapse-9 h4") # получаю название задачи
-    task_texts = soup.select("#collapse-9 .card-body .task.mb-4>div:nth-child(2)") # текст задачи
-    examples = soup.select("#collapse-9 .card-body .task.mb-4>div:nth-child(5) .ofxa") # входные данные, надо придумать как из отсортировать
+    task_names = soup.select("#collapse-10 h4") # получаю название задачи
+    task_texts = soup.select("#collapse-10 .card-body .task.mb-4>div:nth-child(2)") # текст задачи
+    examples = soup.select("#collapse-10 .card-body .task.mb-4>div:nth-child(5) .ofxa") # входные данные, надо придумать как из отсортировать
 
     task_input = [examples[i].text for i in range(0,len(examples), 2)] # каждое второе значение  - это данные на вход
     answers =  [examples[i].text for i in range(1,len(examples), 2)] # а это решения

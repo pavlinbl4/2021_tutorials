@@ -1,7 +1,7 @@
 # из отчета TASS извлекает код фото и сумму
 import openpyxl
 
-wb = openpyxl.load_workbook('/Users/evgeniy/Downloads/Павленко-2.xlsx')
+wb = openpyxl.load_workbook('/Users/evgeniy/Downloads/Павленко-3.xlsx')
 sheet = wb.active
 photos = {}
 x = 7

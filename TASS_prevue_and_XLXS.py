@@ -8,7 +8,7 @@ options = webdriver.ChromeOptions()
 options.add_argument("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4200.0 Iron Safari/537.36")
 browser = webdriver.Chrome(options=options)
 
-wb = openpyxl.load_workbook('/Users/evgeniy/Downloads/Павленко-2.xlsx')
+wb = openpyxl.load_workbook('/Users/evgeniy/Downloads/Павленко-3.xlsx')
 sheet = wb.active
 photos = {}
 x = 7

@@ -120,13 +120,15 @@ def array12(x, y):
 """
 
 
-def array13(n):  # list comprehension так и не придумал
-    itog = [0] * (n * 2)
-    for i in range(1, n + 1):
-        for x in range((i - 1) * 2, i * 2):
-            itog[x] = i
-
-    print(itog)
+def array13(n):  # list comprehension так и не придумал :-((
+    # itog = [0] * (n * 2)
+    # # for i in range(1, n + 1):
+    # #     for x in range((i - 1) * 2, i * 2):
+    # #         itog[x] = i
+    # for i in range(0, len(itog), 2):
+    #     itog[i] = itog[i + 1] = i // 2 + 1
+    # print(itog)
+    print([i // 2 + 1 for i in range(2 * n)])
 
 
 # array13(1)
@@ -157,8 +159,7 @@ def array14(n):
 
 
 def array15(n):
-    arr = [0] * n
-    arr[0] = arr[1] = 1
+    arr = [1] * n
     for i in range(2, n):
         arr[i] = arr[i - 1] + arr[i - 2]
     print(arr)
@@ -174,7 +175,9 @@ def array15(n):
 
 
 def array16(a):
-    print([i * 2 for i in a])
+    # print([i * 2 for i in a])
+    a = [i * 2 for i in a]  # если необходимо именно изменить массив
+    print(a)
 
 
 # array16([])
@@ -187,7 +190,7 @@ def array16(a):
 
 def array17(a):
     for i in range(1, len(a), 2):
-        a[i] = a[i] * 2
+        a[i] *= 2
     print(a)
 
 
@@ -217,7 +220,7 @@ def array18(a):
 def array19(a):
     for i in range(len(a)):
         if a[i] % 2 != 0:
-            a[i] = a[i] * 2
+            a[i] *= 2
     print(a)
 
 
@@ -246,9 +249,10 @@ def array20(a):
 
 
 def array21(a):
-    for i in range(len(a)):
-        if a[i] < 0:
-            a[i] = 0
+    for i in range(len(a)):  # какой вариант предпочтительние с if или с умножением ?
+        # if a[i] < 0:
+        #     a[i] = 0
+        a[i] = a[i] * (a[i] >= 0)
     print(a)
 
 
@@ -277,10 +281,11 @@ def array22(a):
 который больше своего правого соседа. Выведите массив a."""
 
 
-def array23(a):
+def array23(a):  # два варианта решения
     for i in range(len(a) - 1):
-        if a[i] > a[i + 1]:
-            a[i] = 0
+        # if a[i] > a[i + 1]:
+        #     a[i] = 0
+        a[i] = a[i] * (a[i] <= a[i + 1])
     print(a)
 
 
@@ -385,13 +390,13 @@ def array30(a):
 # array30([10, 20, 15])
 # array30([5, 3, 7, 4])
 
-"""ан целочисленный массив a чётной длины. 
+"""Дан целочисленный массив a чётной длины. 
 Измените массив таким образом, чтобы левая и правая половины поменялись местами. 
 Выведите массив a."""
 
 
 def array31(a):
-    ln = int(len(a) / 2)
+    ln = len(a) // 2
     for i in range(ln):
         a[i], a[i + ln] = a[i + ln], a[i]
     print(a)
@@ -476,8 +481,7 @@ def array35(a):
 
 
 def array36(a):
-    # b = [[0] * len(a)]
-    b = a
+    b = [0] * len(a)
     for i in range(len(a)):
         b[i] = a[i] * 2
     print(b)
@@ -497,7 +501,7 @@ def array37(a):
     #     b[i] = a[i] * 2
     # for i in range(0,len(a), 2):
     #     b[i] = a[i]
-    b = a
+    b = a[:]
     for i in range(1, len(a), 2):
         b[i] = a[i] * 2
     print(b)
@@ -512,7 +516,7 @@ def array37(a):
 
 
 def array38(a):
-    b = a
+    b = a[:]
     for i in range(len(a)):
         if a[i] % 2 != 0:
             b[i] = a[i] * 2
@@ -528,10 +532,13 @@ def array38(a):
 
 
 def array39(a):
-    b = []
+    b = [0] * (len(a) // 2)
+    j = 0
     for i in range(1, len(a), 2):
-        b = b + [a[i]]
+        b[j] = a[i]
+        j += 1
     print(b)
+    # print(a[1::2])
 
 
 # array39([1])
@@ -564,7 +571,7 @@ def array41(a):
     # print(b)
     b = [0] * len(a)
     for i in range(len(a)):
-        b[i] = a[len(a) - 1 - i]
+        b[i] = a[-1 - i]
     print(b)
 
 
@@ -579,8 +586,7 @@ def array41(a):
 
 
 def array42(a):
-    b = [0] * len(a)
-    b[0] = a[0]
+    b = [a[0]] * len(a)
     for i in range(1, len(a)):
         b[i] = a[i] + b[i - 1]
     print(b)
@@ -602,7 +608,7 @@ def array43(a):
     # for i in range(1, len(a), 2):
     #     b[i], b[i - 1] = b[i - 1], b[i]
     # print(b)
-    b = a
+    b = a[:]
     for i in range(1, len(a), 2):
         b[i], b[i - 1] = a[i - 1], a[i]
     print(b)
@@ -672,7 +678,7 @@ def array46(a, b):
 
 def array47(a, m, n):
     c = [0] * (n - m + 1)
-    for i in range(n - m + 1):
+    for i in range(len(c)):
         c[i] = a[m + i - 1]
     print(c)
 
@@ -687,9 +693,11 @@ def array47(a, m, n):
 
 
 def array48(a, m, n):
-    c = []
-    for i in range(m - 1, len(a), n):
-        c += [a[i]]
+    c = [0] * ((len(a) - m) // n + 1)
+    i = m - 1
+    for j in range(len(c)):
+        c[j] = a[i]
+        i += n
     print(c)
 
 
@@ -703,9 +711,9 @@ def array48(a, m, n):
 
 
 def array49(a, n):
-    c = []
-    for i in range(n):
-        c += a
+    c = [0] * (len(a) * n)
+    for i in range(len(c)):
+        c[i] = a[i % len(a)]
     print(c)
 
 
@@ -730,6 +738,6 @@ def array50(a, b):
     print(c)
 
 
-array50([1], [2])
-array50([1, 2], [3])
-array50([9, 8], [9, 8, 7])
+# array50([1], [2])
+# array50([1, 2], [3])
+# array50([9, 8], [9, 8, 7])

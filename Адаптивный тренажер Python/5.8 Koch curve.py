@@ -1,50 +1,35 @@
 # https://stepik.org/lesson/21972/step/1?adaptive=true&unit=5232
 
 import turtle
-turtle.speed(1)
+
+turtle.speed(0)
 t = turtle.Pen()
-len = 40
-n = 2
+ln = 200
+n = 3
 
-def main_way(len):
-    if len > 1:
-        t.fd(len/2)
+
+
+def main_way(ln):
+    if ln > ln // n:
+        ln3 = ln // 3
+        main_way(ln3)
         t.lt(60)
-        t.fd(len/2)
-        t.lt(-120)
-        t.fd(len/2)
+        main_way(ln3)
+        t.rt(120)
+        main_way(ln3)
         t.lt(60)
-        t.fd(len/2)
+        main_way(ln3)
+    else:
+
+        t.fd(ln)
+        t.lt(60)
+        t.fd(ln)
+        t.rt(120)
+        t.fd(ln)
+        t.lt(60)
+        t.fd(ln)
 
 
-
-main_way(len)
-
-def main(len):
-    main_way(len)
-    t.lt(60)
-    main_way(len)
-    t.lt(-120)
-    main_way(len)
-    t.lt(60)
-    main_way(len)
-#
-#
-#     main()
-#     t.lt(60)
-#     main()
-#     t.lt(-120)
-#     main()
-#     t.lt(60)
-#     main()
-
-
-
-
-
-
-
-
-
+main_way(ln)
 
 turtle.mainloop()

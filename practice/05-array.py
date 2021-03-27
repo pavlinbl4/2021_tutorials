@@ -730,11 +730,15 @@ def array50(a, b):
     # print(a + b)
     ln = len(a) + len(b)
     c = [0] * ln
-    for i in range(ln):
-        if i < len(a):
-            c[i] = a[i]
-        else:
-            c[i] = b[i - len(a)]
+    # for i in range(ln):
+    #     if i < len(a):
+    #         c[i] = a[i]
+    #     else:
+    #         c[i] = b[i - len(a)]
+    for i in range(len(a)):
+        c[i] = a[i]
+    for i in range(len(b)):
+        c[i + len(a)] = b[i]
     print(c)
 
 

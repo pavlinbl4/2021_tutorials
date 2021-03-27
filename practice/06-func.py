@@ -10,7 +10,7 @@ def mul2(a):
 и возвращает сумму a и b.'''
 
 
-def sumPair(a, b):
+def sum_pair(a, b):
     return a + b
 
 
@@ -19,18 +19,18 @@ false если нечётное.'''
 
 
 def func3(a):
-    return a > 0
+    return a % 2 == 0
 
 
 '''Напишите функцию endsWith47, которая принимает число a в качестве параметра, 
 и возвращает true, если a заканчивается на 4 или 7, либо false в противном случае.'''
 
 
-def endsWith47(a):
+def ends_with47(a):
     return a % 10 == 4 or a % 10 == 7
 
 
-print(f'endsWith47 - {endsWith47(7)}')
+print(f'endsWith47 - {ends_with47(7)}')
 
 '''Напишите функцию includes, 
 которая принимает целочисленный массив a и число x в качестве параметра, 
@@ -38,7 +38,11 @@ print(f'endsWith47 - {endsWith47(7)}')
 
 
 def includes(a, x):
-    return x in a
+    # for i in range(len(a)):
+    for i in a:
+        if i == x:
+            return True
+    return False
 
 
 print(f'includes -  {includes([1], 8)}')
@@ -48,68 +52,77 @@ print(f'includes -  {includes([1], 8)}')
 и возвращает true, если массивы одинаковые, false, если разные.'''
 
 
-def equalsArray(a, b):
-    return a == b
+def equals_array(a, b):
+    if len(a) == len(b):
+        for i in range(len(a)):
+            if a[i] != b[i]:
+                return False
+        return True
+    return False
 
 
-print(f'equalsArray - {equalsArray([2], [3])}')
+print(f'equalsArray - {equals_array([2], [3])}')
+print(f'equalsArray - {equals_array([2], [2])}')
+print(f'equalsArray - {equals_array([2, 3], [2])}')
 
 '''Напишите функцию sumArray, 
 которая принимает целочисленный массив a в качестве параметра, 
 и возвращает сумму всех элементов массива.'''
 
 
-def sumArray(a):
+def sum_array(a):
     s = 0
     for i in range(len(a)):
         s += a[i]
     return s
 
 
-print(f'sumArray - {sumArray([2, 6, 7])}')
+print(f'sumArray - {sum_array([2, 6, 7])}')
 
 '''Напишите функцию maxInArray, 
 которая принимает целочисленный массив a в качестве параметра, 
 и возвращает самый большой элемент массива.'''
 
 
-def maxInArray(a):
+def max_in_array(a):
     m = a[0]
     for i in range(1, len(a)):
         if a[i] > m:
             m = a[i]
     return m
+    # return max(a)
 
 
-print(f'maxInArray - {maxInArray([5, 99, 1, 101, 4])}')
+print(f'maxInArray - {max_in_array([5, 99, 1, 101, 4])}')
 
 '''Напишите функцию minInArray, 
 которая принимает целочисленный массив a в качестве параметра, 
 и возвращает самый маленький элемент массива.'''
 
 
-def minInArray(a):
+def min_in_array(a):
     m = a[0]
     for i in range(1, len(a)):
         if a[i] < m:
             m = a[i]
     return m
+    # return min(a)
 
 
-print(f'minInArray - {minInArray([5, 99, 1, 101, 4])}')
+print(f'minInArray - {min_in_array([5, 99, 1, 101, 4])}')
 
 '''Напишите функцию avgInArray, которая принимает целочисленный массив a в качестве параметра, 
 и возвращает среднее арифметическое элементов массива.'''
 
 
-def avgInArray(a):
+def avg_in_array(a):
     s = 0
     for i in a:
         s += i
     return s / len(a)
 
 
-print(f'avgInArray - {avgInArray([5, 99, 1, 101, 4])}')
+print(f'avgInArray - {avg_in_array([5, 99, 1, 101, 4])}')
 
 '''Напишите функцию forEach, 
 которая принимает целочисленный массив a и функцию f в качестве параметра, 
@@ -117,7 +130,7 @@ print(f'avgInArray - {avgInArray([5, 99, 1, 101, 4])}')
 Ничего не возвращает. Функция f принимает число в качестве параметра и ничего не возвращает.'''
 
 
-def forEach(a, f):
+def for_each(a, f):
     for i in a:
         f(i)
 
@@ -128,19 +141,21 @@ def forEach(a, f):
 Функция f принимает целое число в качестве параметра, и возвращает true или false.'''
 
 
-def f(i):
+def f(i):  # данную функцию я создавал для самопроверки решения
     return True
 
 
-def countByCond(a, f):
+def count_by_cond(a, f):
     count = 0
     for i in a:
-        if f(i) == True:
+        if f(i):
             count += 1
     return count
 
 
-print(f'countByCond - {countByCond([1, 3, 4], f)}')
+print(f'countByCond - {count_by_cond([1, 3, 4], f)}')
+print(f'countByCond - {count_by_cond([14, 57, 72], ends_with47)}')
+print(f'countByCond - {count_by_cond([14, 57, 72], func3)}')
 
 '''Напишите функцию map, 
 которая принимает целочисленный массив a и функцию f в качестве параметра, 
@@ -157,7 +172,7 @@ def map(a, f):  # есть отличие между параметром фун
     return [f(a[i]) for i in range(len(a))]
 
 
-print(f'map - {map([3, 5, 7], f)}')
+print(f'map - {map([3, 5, 7], mul2)}')
 
 '''Напишите функцию filter, 
 которая принимает целочисленный массив a и функцию f в качестве параметра, 
@@ -165,15 +180,16 @@ print(f'map - {map([3, 5, 7], f)}')
 Функция f принимает целое число в качестве параметра, и возвращает true или false.'''
 
 
-def f(i):
+def f(i): # данную функцию я создавал для самопроверки решения
     return True
 
 
 def filter(a, f):
-    return [a[i] for i in range(len(a)) if f(a[i]) == True]
+    return [a[i] for i in range(len(a)) if f(a[i])]
 
 
-print(f'filter - {filter([2, 4, 6, 6], f)}')
+print(f'filter - {filter([2, 4, 6, 6], ends_with47)}')
+print(f'filter - {filter([2, 4, 7, 6], func3)}')
 
 '''Напишите функцию bind, 
 которая принимает функцию f и любой параметр a в качестве параметра, 
@@ -181,13 +197,19 @@ print(f'filter - {filter([2, 4, 6, 6], f)}')
 но принимает на один параметр меньше (вместо первого параметра всегда будет a).'''
 
 
-def f(i):
+def f(i):  # данную функцию я создавал для самопроверки решения
     pass
 
 
-def bind(a, f):
+def bind(f, a):
     return f(a - 1)
 
+
+# foo = bind(sum_pair, 2)
+# print(foo(3))  # 5
+# print(foo(7))  # 9
+# bar = bind(foo, 5)
+# print(bar())  # 7
 
 '''Напишите функцию apply, 
 которая принимает функцию f и любой набор параметров a в качестве параметра, 
@@ -196,16 +218,19 @@ def bind(a, f):
 Функция apply должна возвращать результат работы функции f.'''
 
 
-def f1(i):
+def f1(i):  # данную функцию я создавал для самопроверки решения
     something = "something"
     return something
 
 
-def apply(a, f1):
-    return f1([a])
+def apply(f, *a):
+    return f(a)
 
 
-print(f'apply - {apply(7, f1)}')
+print(f'apply - {apply(sum_array, 5, 4, 1)}')
+print(f'apply - {apply(max_in_array, 5, 4, 1)}')
+print(f'apply - {apply(min_in_array, 5, 4, 1)}')
+print(f'apply - {apply(avg_in_array, 5, 4, 1)}')
 
 '''Напишите функцию call, 
 которая принимает функцию f и массив из произвольных элементов a в качестве параметра, 
@@ -214,17 +239,13 @@ print(f'apply - {apply(7, f1)}')
 Функция call должна возвращать результат работы функции f.'''
 
 
-def f2(*args):
-    something = "call_something"
-    return something
+def call(f, a):
+    return f(*a)
 
 
-def call(a, f2):
-    return f2(*a)
-
-
-a = ['ffsf', 77, 7]
-print(f'apply - {call(a, f2)}')
+print(f'call - {call(sum_pair, [5, 2])}')
+print(f'call - {call(includes, [[6, 3, 5], 3])}')
+print(f'call - {call(equals_array, [[6, 3, 5], [5, 3, 6]])}')
 
 '''Напишите функцию reduce, 
 которая принимает целочисленный массив a и функцию f в качестве параметра, 
@@ -235,11 +256,13 @@ print(f'apply - {call(a, f2)}')
 Функция f принимает два числа в качестве параметров и возвращает число.'''
 
 
-def f4(*i):
+def reduce(a, f):
+    acc = a[0]
+    for i in range(1, len(a)):
+        acc = f(acc, a[i])
     return acc
 
 
-def reduce(a, f4):
-    acc = a[0]
-    for i in range(1, len(a)):
-        f4(acc, a[i])
+print(reduce([5, 4, 3, 2, 1], sum_pair))
+print(reduce([5, 4, 3, 2, 1], max))
+print(reduce([5, 4, 3, 2, 1], lambda a, x: a * x))

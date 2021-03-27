@@ -1,17 +1,11 @@
-"""
-все время смущада ситуация с отсутствием кавычек в примерах задания
-"""
-
-
-
-
 """Дана строка s и число n. Создайте и выведите объект, в котором по ключу 'name' будет значение s, а по ключу 'age'
 значение n. """
 
 
 def obj1(s, n):
-    voc = dict(name=s, age=n)
-    print(voc)
+    # voc = dict(name=s, age=n)
+    # print(voc)
+    print({'name': s, 'age': n})
 
 
 # obj1('Вася', 20)  # {name: 'Вася', age: 20} # почему в варианте ответа ключи написаны без кавычек ?
@@ -35,7 +29,7 @@ def obj2(a):
 
 
 def obj3(a):  # у меня в отете None, а не  undefined
-    print(a.get('name'), a.get('age'))
+    print(a.get('name', 'undefined'), a.get('age', 'undefined'))
 
 
 # obj3({'age': 20})   # undefined 20
@@ -79,7 +73,7 @@ def obj5(a, s):
 
 def obj6(a):
     if a['a'] > a['b']:
-        a['a'] = a['b'] + a['a']
+        a['a'] += a['b']
     else:
         a['a'] += 1
         a['b'] += 1
@@ -95,10 +89,7 @@ def obj6(a):
 
 
 def obj7(a):
-    answer = []
-    for keys in a.keys():
-        answer += [keys]
-    print(answer)
+    print(list(a))
 
 
 # obj7({'a': 20, 'b': 10, 0: 30})  # ['0', 'a', 'b']
@@ -109,10 +100,7 @@ def obj7(a):
 
 
 def obj8(a):
-    answer = []
-    for value in a.values():
-        answer += [value]
-    print(answer)
+    print(list(a.values()))
 
 
 # obj8({'a': 20, 'b': 10, 0: 30})  # [20, 10, 30]
@@ -126,10 +114,7 @@ def obj8(a):
 
 
 def obj9(a, keys):
-    answer = []
-    for key in keys:
-        answer += [key in a]
-    print(answer)
+    print([k in a for k in keys])
 
 
 # obj9({'a': 20, 'b': 10, '0': 30}, ['b', 'x', '0'])  # [True, False, True]
@@ -159,7 +144,7 @@ def obj10(n):  # исходя из примеров ответа ключами 
 
 def obj11(n):
     x = ord("a")
-    print({chr(x + i): (x + i) for i in range(n)})
+    print({chr(i): i for i in range(x, x + n)})
 
 
 # obj11(0)  # {}
@@ -173,8 +158,7 @@ def obj11(n):
 
 
 def obj12(s):
-    voc = {i: ord(i) for i in s}
-    print(voc)
+    print({i: ord(i) for i in s})
 
 
 # obj12('')  # {}
@@ -188,11 +172,7 @@ def obj12(s):
 
 def obj13(s):
     # print(list(set(s))) # проще через множество
-    answer = []
-    voc = {i: None for i in s}
-    for key in voc.keys():
-        answer += [key]
-    print(answer)
+    print(list({i: None for i in s}))
 
 
 # obj13('')  # []
@@ -206,7 +186,10 @@ def obj13(s):
 
 
 def obj14(s):
-    print({i: s.count(i) for i in s})
+    d = {}
+    for c in s:
+        d[c] = d.get(c, 0) + 1
+    print(d)
 
 
 # obj14('')  # {}
@@ -235,7 +218,7 @@ def obj15(a, d):
 
 
 def obj16(d):
-    print({d[key]: key for key in d.keys()})
+    print({v: k for k, v in d.items()})
 
 
 # obj16({'a': 'x', 'b': 'y', 'c': 'z'})  # {'x': 'a', 'y': 'b', 'z': 'c'}
@@ -248,7 +231,8 @@ def obj16(d):
 
 
 def obj17(a):
-    print({a[i]: a[i + 1] for i in range(0, len(a), 2)})
+    # print({a[i]: a[i + 1] for i in range(0, len(a), 2)})
+    print(dict(zip(a[::2], a[1::2])))
 
 
 # obj17(['a', 'b'])  # {'a': 'b'}

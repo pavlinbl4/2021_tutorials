@@ -15,7 +15,7 @@ def string1(s):
 
 
 def string2(s):
-    print("Hello" in s[:6])
+    print(s.startswith('Hello'))
 
 
 # string2('Hello, world!')  # true
@@ -27,7 +27,8 @@ def string2(s):
 
 
 def string3(s):
-    print("end." in s[-4:])
+    # print("end." in s[-4:])
+    print(s.endswith("end."))
 
 
 # string3('End of string.')  # false
@@ -149,11 +150,13 @@ def string12(s):
 
 
 def string13(c, s):
-    inx = s.find(c)
-    if inx >= 0:
-        print(f"{s[:inx]}{c}{s[inx:]}")
-        return
-    print(s)
+
+    # inx = s.find(c)
+    #
+    # if inx >= 0:
+    #     print(f"{s[:inx]}{c}{s[inx:]}")
+    #     return
+    print(s.replace(c, c * 2, 1))
 
 
 # string13('b', 'abcabc')  # abbcabc
@@ -261,12 +264,9 @@ def string19(s, m, n):
 
 
 def string20(s):
-    if s.count(" ") > 1:
-        s1 = s.find(" ") + 1
-        s2 = s.rfind(" ")
-        print(s[s1:s2])
-        return
-    print()
+    s1 = s.find(" ") + 1
+    s2 = s.rfind(" ")
+    print(s[s1:s2])
 
 
 # string20('abc abc')  #
@@ -280,12 +280,13 @@ def string20(s):
 
 def string21(s, n):
     if len(s) > n:
-        print(s[n:])
-        return
-    print("." * (n - len(s)) + s)
+        print(s[-n:])
+    else:
+        # print("." * (n - len(s)) + s)
+        print(s.rjust(n, '.'))
 
 
-# string21('abc xyz', 3)  # xyz
+# string21('abc xyzxyz', 3)  # xyz
 # string21('abc', 7)  # ....abc
 # string21('1234', 4)  # 1234
 
@@ -306,12 +307,13 @@ def string22(n1, n2, s1, s2):
 
 
 def string23(s):
-    count = 0
-    words = s.split()
-    for i in words:
-        if i[0].isupper():
-            count += 1
-    print(count)
+    # count = 0
+    # words = s.split()
+    # for i in words:
+    #     if i[0].isupper():
+    #         count += 1
+    # print(count)
+    print(sum(i[0].isupper() for i in s.split()))
 
 
 # string23('Hello, world')  # 1
@@ -323,11 +325,7 @@ def string23(s):
 
 
 def string24(s):
-    digits = list(map(int, s.split()))
-    s = 0
-    for i in digits:
-        s += i
-    print(s)
+    print(sum(map(int, s.split())))
 
 
 # string24('10 20 30')  # 60
@@ -352,11 +350,9 @@ def string25(a):
 
 def string26(s):
     arr = s.split()
-    if 'class' in arr:
-        print(*arr)
-        return
-    arr = arr + ['class']
-    print(*arr)
+    if 'class' not in arr:
+        arr.append('class')
+    print(' '.join(arr))
 
 
 # string26('cclass classs')  # cclass classs class
@@ -368,10 +364,11 @@ def string26(s):
 
 
 def string27(s):
-    arr = s.split()
-    while 'class' in arr:
-        arr.remove("class")
-    print(*arr)
+    # b = []
+    # for w in s.split():
+    #     if w != 'class':
+    #         b.append(w)
+    print(*[w for w in s.split() if w != 'class'])
 
 
 # string27('cclass classs')  # cclass classs
@@ -383,10 +380,12 @@ def string27(s):
 
 
 def string28(s):
-    ind = s.rfind("/") + 1
-    print(*s[ind:].split("."))
+    inx_dot = s.rfind('.')
+    ind_sls = s.rfind('/')
+    print(s[inx_dot + 1:], s[ind_sls + 1: inx_dot])
 
 
-string28('/var/www/index.html')  # html index
-string28('/var/log/log.01.tar.gz')  # gz log.01.tar
-string28('Zadachi na stroki.js')  # js Zadachi na stroki
+# string28('/var/www/index.html')  # html index
+# string28('/var/log/log.01.tar.gz')  # gz log.01.tar
+# string28('Zadachi na stroki.js')  # js Zadachi na stroki
+# string28('/a/b/Zadachi.na.stroki.js')  # js Zadachi.na.stroki

@@ -57,35 +57,26 @@ def seq3(a):
 
 
 def seq4(a):
-    # m = a[0]
-    # for i in range(1, len(a)):
-    #     if a[i] > m:
-    #         m = a[i]
-
-    print(a[0])
+    # print(list(a)) далее первый элемент как максимум и сравнить все остальные с ним
+    print(max(a))  # если можно использовать max - то все просто
 
 
-seq4(iter(4, 2, 6))  # 6
-seq4(iter(-4, -3))  # -3
-seq4(iter(7, 1, 1))  # 7
+# seq4(iter(4, 2, 6))  # 6
+# seq4(iter(-4, -3))  # -3
+# seq4(iter(7, 1, 1))  # 7
 
 """Дана целочисленная последовательность a. 
 Выведите порядковый номер первого из наименьших её элементов."""
 
 
 def seq5(a):
-    index = 0
-    minn = a[index]
-    for i in range(0, len(a)):
-        if a[i] < minn:
-            minn = a[i]
-            index = i
-    print(f'seq5 - {index}')
+    a = list(a)
+    print(a.index(min(a)) + 1)
 
 
 # seq5(iter(4, 5, 1, 6))   # 3
 # seq5(iter(-3, -4))   # 2
-# seq5((3,1, 7, 1, 3,0))   # 1
+# seq5((3, 7, 3))   # 1
 
 
 """Дана целочисленная последовательность a. 
@@ -93,19 +84,22 @@ def seq5(a):
 
 
 def seq6(a):
-    index = 0
-    maxx = a[index]
-    for i in range(0, len(a)):
-        if a[i] >= maxx:
-            maxx = a[i]
-            index = i
-    print(f'seq6 - {index}')
+    a = list(a)
+    # print(type(a))
+    b = str(max(a))
+    a = list(map(str,a))
+
+    a = "".join(a)
+    print(a.rfind(b))
+
+    # print(a.index(max(a)))
 
 
-# seq6(iter(4, 5, 1, 6))   # 4
+
+seq6(iter(4, 5, 1, 6))   # 4
 # seq6(iter(-3, -4))   # 1
 # seq6(iter(3, 7, 3, 7))   # 4
-# seq6((7, 3, 7, 3, 7))   # 4
+
 
 
 """Дана целочисленная последовательность a. 

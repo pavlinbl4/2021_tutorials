@@ -57,8 +57,8 @@ def seq3(a):
 
 
 def seq4(a):
-    # print(list(a)) далее первый элемент как максимум и сравнить все остальные с ним
     print(max(a))  # если можно использовать max - то все просто
+
 
 
 # seq4(iter(4, 2, 6))  # 6
@@ -69,9 +69,11 @@ def seq4(a):
 Выведите порядковый номер первого из наименьших её элементов."""
 
 
-def seq5(a):
+def seq5(a): # не нашел другого решения, так как после любого действия над генерируемым кортежем он исчезает
     a = list(a)
     print(a.index(min(a)) + 1)
+
+
 
 
 # seq5(iter(4, 5, 1, 6))   # 3
@@ -83,20 +85,17 @@ def seq5(a):
 Выведите порядковый номер последнего из наибольших её элементов."""
 
 
-def seq6(a):
+def seq6(a): # тут тоже фиаско, даже со списком как0то все коряво
     a = list(a)
-    # print(type(a))
     b = str(max(a))
     a = list(map(str,a))
-
     a = "".join(a)
-    print(a.rfind(b))
-
-    # print(a.index(max(a)))
+    print(a.rfind(b) + 1)
 
 
 
-seq6(iter(4, 5, 1, 6))   # 4
+
+# seq6(iter(4, 5, 1, 6))   # 4
 # seq6(iter(-3, -4))   # 1
 # seq6(iter(3, 7, 3, 7))   # 4
 
@@ -122,17 +121,13 @@ def seq7(a):
 Упорядочена ли она по возрастанию?"""
 
 
-def seq8(a):
-    for i in range(len(a) - 1):
-        if a[i] > a[i + 1]:
-            print(False)
-            return
-    print(True)
+def seq8(a):  # пока не придумал как решить
+    print("задача 8 не решена")
 
 
-# seq8((1, 4, 5, 10))   # true
-# seq8((3, 4, 5, 4))   # false
-# seq8((3, 3, 4))   # false
+seq8((1, 4, 5, 10))
+# seq8((3, 4, 5, 4))
+# seq8((3, 3, 4))
 
 
 """Дана целочисленная последовательность a. 
@@ -140,14 +135,16 @@ def seq8(a):
 
 
 def seq9(a):
-    for i in range(len(a) - 1):
-        if a[i] < a[i + 1]:
-            print(False)
-            return
-    print(True)
+    # a = list(a)
+    # for i in range(len(a) - 1):
+    #     if a[i] < a[i + 1]:
+    #         print(False)
+    #         return
+    # print(True)
+    print("задача 8 не решена")
 
 
-# seq9((10, 5, 4, 1))  # true
+seq9((10, 5, 4, 1))  # true
 # seq9((4, 3, 2, 3))  # false
 # seq9((4, 3, 3))  # true
 # seq9((-3, -2, -1))  # false
@@ -158,14 +155,15 @@ def seq9(a):
 
 
 def seq10(a):  # опять проблеммы с вводом, получается что передаю кортеж, тогда нужна ","
-    count = 0
-    for i in range(len(a) - 1):
-        if a[i] < a[i + 1]:
-            count += 1
-    print(count)
+    # count = 0
+    # for i in range(len(a) - 1):
+    #     if a[i] < a[i + 1]:
+    #         count += 1
+    # print(count)
+    print("задача 10 не решена")
 
 
-# seq10((4, 7, 9))   # 2
+seq10((4, 7, 9))   # 2
 # seq10((-3, -2, -1))   # 1
 # seq10((10,))   # 0
 
@@ -175,10 +173,10 @@ def seq10(a):  # опять проблеммы с вводом, получает
 
 
 def seq11(a):
-    pass
+    print("задача 11 не решена")
 
 
-# seq11((-4, 7, -9))   #
+seq11((-4, 7, -9))   #
 # seq11((-3, 2, -4, -2))   #
 # seq11((10, 10))   #
 
@@ -190,21 +188,37 @@ def seq11(a):
 
 
 def seq12(a):
-    pass
+    s = 0
+    pred = 0
+    for i in a:
+        pred += i
+        s += pred
+    print(s)
 
 
-# seq12((2, 2, 2))   #
+# seq12((2, 2, 3))
+# seq12((3, 2, 1))
+# seq12((1, 1, 1, 1))
 
 
-"""Дана целочисленная последовательность a. 
-Если брать только каждый второй элемент, получится возрастающая последовательность?"""
+
+"""
+Дана целочисленная последовательность a. 
+Если брать только каждый второй элемент, получится возрастающая последовательность?
+"""
 
 
 def seq13(a):
-    pass
+    # for _ in range(4):
+    #     count = 1
+    #     s = 0
+    #     for i in a:
+    #         if count % 2 == 0 :
+    #             s += i
+    print("задача 13 не решена")
 
 
-# seq13((-3, 2, -4, -2))   #
+seq13((-3, 2, -4, -2))   #
 
 
 """Дана целочисленная последовательность a. 
@@ -213,13 +227,14 @@ def seq13(a):
 
 
 def seq14(a):
-    pass
+    print("задача 14 не решена")
 
 
-# seq14((1, 1, 1))   # true
+seq14((1, 1, 1))   # true
 # seq14((5, 2, 2))   # true
 # seq14((-1, 3, 0, 7, -3))   # false
 # seq14((1, 3, 0, 7, 2))   # false
+
 
 
 """Дана целочисленная последовательность a. 
@@ -227,7 +242,14 @@ def seq14(a):
 
 
 def seq15(a):
-    pass
+    count = 1
+    s = 0
+    for i in a:
+        if count % 2 == 0:
+            i *= -1
+        s += i
+        count += 1
+    print(s)
 
 
 # seq15((1, -1, 1))   # 3
@@ -240,7 +262,14 @@ def seq15(a):
 
 
 def seq16(a):
-    pass
+    neg_count = 0
+    pos_count = 0
+    for i in a:
+        if i > 0:
+            pos_count += 1
+        else:
+            neg_count += 1
+    print(pos_count,neg_count)
 
 
 # seq16((1, -1, 1))   # 2 1
@@ -253,10 +282,16 @@ def seq16(a):
 
 
 def seq17(a):
-    pass
+    index = 0
+    for i in a:
+        index += 1
+        if i % 2 == 0:
+            print(index)
+            return
+    print(0)
 
 
-#
+
 # seq17((5, 2, 4))   # 2
 # seq17((2, 6, 4, 8))   # 1
 # seq17((7, 3, 1))   # 0
@@ -267,7 +302,13 @@ def seq17(a):
 
 
 def seq18(a):
-    pass
+    summ = 0
+    index = 0
+    for i in a:
+        index += 1
+        if i % 2 == 0:
+            summ += index
+    print(summ)
 
 
 # seq18((1, 2, 4))   # 5
@@ -281,7 +322,15 @@ def seq18(a):
 
 
 def seq19(a):
-    pass
+    summ = 0
+    summ_index = 0
+    index = 0
+    for i in a:
+        index += 1
+        if i % 2 != 0:
+            summ_index += index
+            summ += i
+    print(summ_index,summ)
 
 
 # seq19((1, 2, 4))   # 1 1
@@ -293,11 +342,23 @@ def seq19(a):
 Выведите первую пару, у которой максимальная сумма."""
 
 
-def seq20(a):
-    pass
+def seq20(a): # не понятно  почему в третьем варианте элемент последоватльности выводится как отдельные числа, а не как список
+    # maxx = -101
+    # # para = a[0]
+    # for i in a:
+    #     if sum(i) > maxx:
+    #         maxx = sum(i)
+    #         para = i
+    # print(para)
+
+    # for i in a:
+    #     print(i)
+    # print("*" * 30)
+    print("задача 20 не решена")
 
 
-# seq20(([1, 1], [0, 3], [2, 1]))   # [0, 3]
+
+seq20(([1, 1], [0, 3], [2, 1]))   # [0, 3]
 # seq20(([-1, 1], [0, 0], [-2, 0]))   # [-1, 1]
 # seq20(([5, 10]))   # [5, 10]
 
@@ -307,10 +368,10 @@ def seq20(a):
 
 
 def seq21(a):
-    pass
+    print("задача 21 не решена")
 
 
-# seq21(([1, 3], [3, 1], [2, 1]))   # 2
+seq21(([1, 3], [3, 1], [2, 1]))   # 2
 # seq21(([5, 5], [3, 4], [4, 4]))   # 12
 # seq21(([5, 3]))   # 15
 
@@ -320,7 +381,7 @@ def seq21(a):
 
 
 def seq22(a):
-    pass
+    print("задача 22 не решена")
 
 
 # seq22(([1, 3], [3, 1], [2, 1]))   # 8

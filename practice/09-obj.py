@@ -230,7 +230,7 @@ def obj16(d):
 а значениями каждый второй, начиная со второго.'''
 
 
-def obj17(a):
+def obj17(a): # здесь мы остановили проверку ДЗ
     # print({a[i]: a[i + 1] for i in range(0, len(a), 2)})
     print(dict(zip(a[::2], a[1::2])))
 
@@ -244,13 +244,9 @@ def obj17(a):
 
 
 def obj18(d):
-    # s = 0
-    # for key in d.keys():
-    #     s += d[key]
-    # print(s)
     arr = []
     for value in d.values():
-        arr += [value]
+        arr.append(value)
     print(max(arr), sum(arr))
 
 
@@ -263,46 +259,83 @@ def obj18(d):
 
 
 def obj19(d):
-    pass
+    # arr = []                      # 1 вариант
+    # for value in d.values():
+    #     arr.append(value)
+    # max_value = max(arr)
+    # for i in d:
+    #     if d[i] == max_value:
+    #         print(i)
+
+    sorted_tupl = sorted(d.items(), key=lambda item: item[1])  # 2 вариант
+    print(sorted_tupl[-1][0])
 
 
-obj19({'a': 5, 'b': 7, 'c': 3})  # 
-obj19({'a': -3, 'b': -5, 'c': -1})  # 
-obj19({'a': 10, 'b': 20, 'b': 10})  # одинаковые ключи в словаре
+
+# obj19({'a': 5, 'b': 7, 'c': 3})  #
+# obj19({'a': -3, 'b': -5, 'c': -1})  #
+# obj19({'a': 10, 'b': 20, 'b': 10})  # одинаковые ключи в словаре
 
 '''Дан массив вида [['key1', 'value1'], ['key2', 'value2']...]. 
 Создайте из него объект вида {key1: 'value1', key2: 'value2'...}.'''
 
 
 def obj20(a):
-    pass
+    # voc = {}          # вариант 1
+    # for i in a:
+    #     voc[i[0]] = i[1]
+    # print(voc)
+
+    print({i[0]: i[1] for i in a}) # вариант 2
 
 
-obj20([['key1', 'value1'], ['key2', 'value2']])  #
-obj20([['a', 'b'], ['c', 'd']])  #
-obj20([['a', 'b'], ['a', 'c'], ['a', 'd']])  #
+# obj20([['key1', 'value1'], ['key2', 'value2']])  #
+# obj20([['a', 'b'], ['c', 'd']])  #
+# obj20([['a', 'b'], ['a', 'c'], ['a', 'd']])  #
 
 
 def obj21(a, b):
-    pass
+    # voc = {}                      # вариант 1
+    # for i in range(len(a)):
+    #     voc[a[i]] = b[i]
+    # print(voc)
+
+    print({a[i]: b[i] for i in range(len(a))})  # вариант 2
 
 
-obj21(['key1', 'key2'], ['value1', 'value2'])
-obj21(['a', 'b'], ['c', 'd'])
-obj21(['a', 'a', 'a'], ['b', 'c', 'd'])
+# obj21(['key1', 'key2'], ['value1', 'value2'])
+# obj21(['a', 'b'], ['c', 'd'])
+# obj21(['a', 'a', 'a'], ['b', 'c', 'd'])
 
 
 def obj22(a):
-    pass
+    # voc = {}                              # вариант 1
+    # for i in a:
+    #     voc[i['name']] = i['value']
+    # print(voc)
+
+    print({i['name']: i['value'] for i in a})   # вариант 2
 
 
-obj22([{'name': 'key1', 'value': 'value1'}, {'name': 'key2', 'value': 'value2'}])
-obj22([{'name': 'a', 'value': 'b'}, {'name': 'c', 'value': 'd'}])
-obj22([{'name': 'a', 'value': 'b'}, {'name': 'a', 'value': 'c'}])
+
+
+
+# obj22([{'name': 'key1', 'value': 'value1'}, {'name': 'key2', 'value': 'value2'}])
+# obj22([{'name': 'a', 'value': 'b'}, {'name': 'c', 'value': 'd'}])
+# obj22([{'name': 'a', 'value': 'b'}, {'name': 'a', 'value': 'c'}])
 
 
 def obj23(a):
-    pass
+    # arr = []   # вариант 1
+    # for i in a:
+    #     arr.append(i)
+    #     arr.append(a[i])
+    # print(arr)
+
+    # arr = []   # вариант 2
+    # for i in a.items():
+    #     arr += list(i)
+    # print(arr)
 
 
 obj23({'key1': 'value1', 'key2': 'value2'})

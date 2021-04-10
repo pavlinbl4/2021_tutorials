@@ -25,4 +25,5 @@ def finder(path):
     print('Not need in optimization' * flag)
 
 
-finder("/Users/evgeniy/Movies")
+finder("/Users/evgeniy/Public")
+# finder(path)

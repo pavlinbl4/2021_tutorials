@@ -59,12 +59,11 @@ def seq3(a):
 def seq4(a):  # начало домашнего задания
     # print(max(a))  # если можно использовать max - то все просто
 
-    max_number = -100
+    max_number = next(a)
     for i in a:
-        if i >= max_number:
+        if i > max_number:
             max_number = i
     print(max_number)
-
 
 
 # seq4(iter(4, 2, 6))  # 6

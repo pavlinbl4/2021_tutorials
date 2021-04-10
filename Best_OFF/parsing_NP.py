@@ -21,7 +21,7 @@ headers = {
 }
 
 #print("ENTER NUMBER OF PAGES") # запрашиваю сколько страниц хочу отпарсить  НАДО АВТОМАТИЗИРОВАТЬ, ЧТОБ НЕ ВЫХОДИЛО ЗА ПРЕДЕЛ МЕСЯЦА
-number_pages = 3 #int(input())
+number_pages = 4 #int(input())
 
 os.makedirs("pages",exist_ok=True) # создаю папку для сохранения страниц, если папка есть, то она остается
 

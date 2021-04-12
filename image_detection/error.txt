@@ -1,0 +1,19 @@
+Traceback (most recent call last):
+  File "/Users/evgeniy/PycharmProjects/2021_tutorials/image_detection/01_tutorial.py", line 2, in <module>
+    from pixellib.instance import instance_segmentation
+  File "/Users/evgeniy/PycharmProjects/Python 2021/venv/lib/python3.9/site-packages/pixellib/instance.py", line 7, in <module>
+    from pixellib.mask_rcnn import MaskRCNN
+  File "/Users/evgeniy/PycharmProjects/Python 2021/venv/lib/python3.9/site-packages/pixellib/mask_rcnn.py", line 14, in <module>
+    import multiprocessing
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/multiprocessing/__init__.py", line 16, in <module>
+    from . import context
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/multiprocessing/context.py", line 6, in <module>
+    from . import reduction
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/multiprocessing/reduction.py", line 16, in <module>
+    import socket
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/socket.py", line 548, in <module>
+    import array
+  File "/Users/evgeniy/PycharmProjects/2021_tutorials/array.py", line 11
+    for i in range(len(a)):
+                           ^
+IndentationError: expected an indented block

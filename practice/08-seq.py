@@ -73,24 +73,23 @@ def seq4(a):  # начало домашнего задания
 """Дана целочисленная последовательность a. 
 Выведите порядковый номер первого из наименьших её элементов."""
 
+
 # Задача_5
 def seq5(a):
-    # a = list(a)
-    # print(a.index(min(a)) + 1)
-    min_number = 101
-    count = 0
-    flag = 0
+    min_digit = next(a)
+    count = 1
+    digit_number = 1
     for i in a:
         count += 1
-        if i < min_number:
-            min_number = i
-            flag = count
-    print(flag)
+        if i < min_digit:
+            min_digit = i
+            digit_number = count
+    print(digit_number)
 
 
-# seq5(iter(4, 5, 1, 6, 7, 9))  # 3
-# seq5(iter(-3, -4))   # 2
-# seq5((3, 7, 3))   # 1
+# seq5(iter(4, 5, 1, 6, 7))  # 3
+# seq5(iter(-3, -4))  # 2
+# seq5(iter(3, 7, 3))  # 1
 
 
 """Дана целочисленная последовательность a. 
@@ -98,14 +97,16 @@ def seq5(a):
 
 
 def seq6(a):
-    max_number = -101
-    count = 0
+    max_number = next(a)
+    count = 1
+    flag = 1
     for i in a:
         count += 1
-        if i >= max_number:
+        if i >= max_number:  # если просто ">"  то первое  максимальное значение
             max_number = i
             flag = count
     print(flag)
+
 
 # seq6(iter(4, 5, 1, 6))   # 4
 # seq6(iter(-3, -4))   # 1
@@ -116,7 +117,7 @@ def seq6(a):
 Есть ли в ней хотя бы одно отрицательное число?"""
 
 
-def seq7(a):
+def seq7(a):  # тут и без next  все было решено
     for i in a:
         if i < 0:
             print(True)
@@ -132,8 +133,8 @@ def seq7(a):
 Упорядочена ли она по возрастанию?"""
 
 
-def seq8(a): # в 8 и 9 задаче у меня недопонимание  неубывающей и невозрастающей последовательности
-    min_number = -101
+def seq8(a):
+    min_number = next(a)
     for i in a:
         if i <= min_number:
             print("False")
@@ -143,11 +144,9 @@ def seq8(a): # в 8 и 9 задаче у меня недопонимание  н
     print("True")
 
 
-
-
 # seq8(iter(1, 4, 5, 10))
 # seq8(iter(3, 4, 5, 4))
-# seq8(iter(3, 3, 4))
+# seq8(iter(3, 3, 4))   # есть недопонимание теории, если два элемента одинаковы, то последовательность не упорядочена по возрастанию?
 # seq8(iter(-3, -2, -1))
 
 
@@ -156,9 +155,9 @@ def seq8(a): # в 8 и 9 задаче у меня недопонимание  н
 
 
 def seq9(a):
-    max_number = 101
+    max_number = next(a)
     for i in a:
-        if i >= max_number:
+        if i > max_number:
             print("False")
             return
         else:
@@ -168,7 +167,7 @@ def seq9(a):
 
 # seq9(iter(10, 5, 4, 1))  # true
 # seq9(iter(4, 3, 2, 3))  # false
-# seq9(iter(4, 3, 3))  # true - непонятно почему в данном случает ответ True
+# seq9(iter(4, 3, 3))  # true аналогичный вопрос с одинаковыми числами в последовательности
 # seq9(iter(-3, -2, -1))  # false
 
 
@@ -177,19 +176,17 @@ def seq9(a):
 
 
 def seq10(a):
-    x = 1
-    left = 0
+    left = next(a)
     count = 0
     for i in a:
-        left += i
-        x = -x
-        print(left)
+        if i > left:
+            count += 1
+        left = i
+    print(count)
 
 
-
-
-# seq10(iter(4, 20, 9,11,14))  # 2
-# seq10(iter(-3, -2, -1))   # 1
+# seq10(iter(4,7,9))  # 2
+# seq10(iter(-3, -2, -4))   # 1
 # seq10(iter(10,))   # 0
 
 
@@ -198,10 +195,17 @@ def seq10(a):
 
 
 def seq11(a):
-    print("задача 11 не решена")
+    first = next(a)
+    count = 1
+    for i in a:
+        count += 1
+        if i <= 0 and count % 2 == 0:
+            print(False)
+            return
+    print(True)
 
 
-seq11(iter(-4, 7, -9))  #
+# seq11(iter(-4, 7, -9))  #
 # seq11(iter(-3, 2, -4, -2))   #
 # seq11(iter(10, 10))   #
 
@@ -233,19 +237,23 @@ def seq12(a):
 
 
 def seq13(a):
-    # for _ in range(4):
-    #     count = 1
-    #     s = 0
-    #     for i in a:
-    #         if count % 2 == 0 :
-    #             s += i
-    print("задача 13 не решена")
+    first = next(a)
+    max_digit = next(a)
+    count = 1
+    for i in a:
+        if count % 2 == 0:
+            if i <= max_digit:
+                print(False)
+                return
+            max_digit = i
+        count += 1
+    print(True)
 
 
-seq13(iter(-4, 7, -9))  #
-seq13(iter(-3, 2, -4, -2))  #
-seq13(iter(-1, 3, -2, 7, -3))  #
-seq13(iter(-1, 3, -2, 7, -3, 5))  #
+# seq13(iter(-4, 7, -9))  #
+# seq13(iter(-3, 2, -4, -2))  #
+# seq13(iter(-1, 3, -2, 7, -3))  #
+# seq13(iter(-1, 3, -2, 7, -3, 5))  #
 
 """Дана целочисленная последовательность a. 
 Если брать только каждый второй элемент, начиная с первого, 
@@ -253,10 +261,20 @@ seq13(iter(-1, 3, -2, 7, -3, 5))  #
 
 
 def seq14(a):
-    print("задача 14 не решена")
+    first = next(a)
+    min_digit = next(a)
+    count = 1
+    for i in a:
+        if count % 2 == 0:
+            if i > min_digit:
+                print(False)
+                return
+            min_digit = i
+        count += 1
+    print(True)
 
 
-seq14(iter(-1, 3, 0, 7, -3))  # true
+# seq14(iter(-1, 3, 0, 7, -3))  # true
 # seq14(iter(5, 2, 2))   # true
 # seq14(iter(-1, 3, 0, 7, -3))   # false
 # seq14(iter(1, 3, 0, 7, 2))   # false
@@ -366,23 +384,17 @@ def seq19(a):
 Выведите первую пару, у которой максимальная сумма."""
 
 
-def seq20(
-        a):  # не понятно  почему в третьем варианте элемент последоватльности выводится как отдельные числа, а не как список
-    # maxx = -101
-    # # para = a[0]
-    # for i in a:
-    #     if sum(i) > maxx:
-    #         maxx = sum(i)
-    #         para = i
-    # print(para)
-
-    # for i in a:
-    #     print(i)
-    # print("*" * 30)
-    print("задача 20 не решена")
+def seq20(a):
+    max_para = next(a)
+    max_sum = sum(max_para)
+    for i in a:
+        if sum(i) > max_sum:
+            max_sum = sum(i)
+            max_para = i
+    print(max_para)
 
 
-seq20(iter([1, 1], [0, 3], [2, 1]))  # [0, 3]
+# seq20(iter([1, 1], [0, 3], [2, 1]))  # [0, 3]
 # seq20(iter([-1, 1], [0, 0], [-2, 0]))   # [-1, 1]
 # seq20(iter([5, 10]))   # [5, 10]
 
@@ -392,10 +404,15 @@ seq20(iter([1, 1], [0, 3], [2, 1]))  # [0, 3]
 
 
 def seq21(a):
-    print("задача 21 не решена")
+    min_para = next(a)
+    min_sq = min_para[0] * min_para[1]
+    for i in a:
+        if i[0] * i[1] < min_sq:
+            min_sq = i[0] * i[1]
+    print(min_sq)
 
 
-seq21(iter([1, 3], [3, 1], [2, 1]))  # 2
+# seq21(iter([1, 3], [3, 1], [2, 1]))  # 2
 # seq21(iter([5, 5], [3, 4], [4, 4]))   # 12
 # seq21(iter([5, 3]))   # 15
 
@@ -405,25 +422,39 @@ seq21(iter([1, 3], [3, 1], [2, 1]))  # 2
 
 
 def seq22(a):
-    print("задача 22 не решена")
+    max_para = next(a)
+    for i in a:
+        if sum(i) > sum(max_para):
+            max_para = i
+    print(sum(max_para) * 2)
 
 
-seq22(iter([1, 3], [3, 1], [2, 1]))   # 8
+# seq22(iter([1, 3], [3, 1], [2, 1]))   # 8
 # seq22(iter([5, 5], [3, 4], [4, 4]))   # 20
 # seq22(iter([5, 3]))   # 16
 
 
-"""Дана целочисленная последовательность a. 
-Выведите два наибольших элемента в порядке невозрастания."""
+"""
+Дана целочисленная последовательность a. 
+Выведите два наибольших элемента в порядке невозрастания.
+"""
 
 
 def seq23(a):
-    pass
+    max_1 = next(a)
+    max_2 = next(a)
+    if max_2 > max_1:
+        max_1, max_2 = max_2, max_1
+    for i in a:
+        if i >= max_1:
+            max_2 = max_1
+            max_1 = i
+    print(max_1, max_2)
 
 
-# seq23((3, 1, 5, 2))   # 5 3
-# seq23((-1, -2, -3, -4))   # -1 -2
-# seq23((4, 5, 3, 5))   # 5 5
+# seq23(iter(3, 1, 5, 2))   # 5 3
+# seq23(iter(-1, -2, -3, -4))   # -1 -2
+# seq23(iter(4, 5, 3, 5))   # 5 5
 
 
 """Дана целочисленная последовательность a. 
@@ -431,12 +462,20 @@ def seq23(a):
 
 
 def seq24(a):
-    pass
+    zero = next(a)
+    first = next(a)
+    max_sum = zero + first
+    for i in a:
+        sum_neighbour = first + i
+        first = i
+        if sum_neighbour > max_sum:
+            max_sum = sum_neighbour
+    print(max_sum)
 
 
-# seq24((3, 2, 5, 1))   # 7
-# seq24((-1, -2, -3, -4))   # -3
-# seq24((3, 5, 4, 6))   # 10
+# seq24(iter(3, 2, 5, 1))   # 7
+# seq24(iter(-1, -2, -3, -4))   # -3
+# seq24(iter(3, 5, 4, 6))   # 10
 
 
 """Дана целочисленная последовательность a, состоящая из нулей и единиц. 
@@ -445,12 +484,25 @@ def seq24(a):
 
 
 def seq25(a):
-    pass
+    first = next(a)
+    zero_count = one_count = 1
+
+    for i in a:
+        if first != i:
+            print(zero_count if i == 1 else one_count)
+            zero_count = one_count = 1
+        else:
+            if i == 0:
+                zero_count += 1
+            else:
+                one_count += 1
+        first = i
+    print(zero_count if i == 0 else one_count)
 
 
-# seq25((0, 1, 0, 1))   # 1
-# seq25((1, 1, 1, 0))   # 3
-# seq25((0, 0, 1, 1))   # 2
+# seq25(iter(0, 1, 0, 1))
+# seq25(iter(1, 1, 1, 0))
+# seq25(iter(0, 0, 1, 1))
 
 
 """Дана целочисленная последовательность a, состоящая из нулей и единиц. 
@@ -459,7 +511,13 @@ def seq25(a):
 
 
 def seq26(a):
-    pass
+    first = next(a)
+    count = 1
+    for i in a:
+        if first != i:
+            count += 1
+        first = i
+    print(count)
 
 
 # seq26(iter(0, 1, 0, 1))   # 4
@@ -468,11 +526,23 @@ def seq26(a):
 
 
 """Дана целочисленная последовательность a, состоящая из нулей и единиц. 
-Выведите длину самой большой группы одинаковых цифр, идущих подряд. Одиночные элементы тоже считать группами."""
+Выведите длину самой большой группы одинаковых цифр, идущих подряд. 
+Одиночные элементы тоже считать группами."""
 
 
 def seq27(a):
-    pass
+    first = next(a)
+    max_count = 1
+    count = 1
+    for i in a:
+        if i == first:
+            count += 1
+        else:
+            if count > max_count:
+                max_count = count
+                count = 1
+        first = i
+    print(max(max_count, count))
 
 
 # seq27(iter(0, 1, 0, 1))   # 1
@@ -481,7 +551,8 @@ def seq27(a):
 
 
 """Дана целочисленная последовательность a, состоящая из нулей и единиц. 
-Выведите порядковый номер числа, с которого начинается первая самая длинная группа одинаковых цифр, 
+Выведите порядковый номер числа, с которого начинается первая самая 
+длинная группа одинаковых цифр, 
 идущих подряд. Одиночные элементы тоже считать группами."""
 
 
@@ -576,6 +647,3 @@ def seq33(a, k):
 # seq33(iter(10, 9, 8, 7, 7, 7, 5, 5), 5)   # 6
 """Дана целочисленная последовательность a.
 Выведите все элементы последовательности."""
-
-
-

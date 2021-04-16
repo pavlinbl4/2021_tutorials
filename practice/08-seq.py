@@ -557,11 +557,28 @@ def seq27(a):
 
 
 def seq28(a):
-    pass
+    first = next(a)
+    index = 1
+    key_index = 1
+    groop_index = {1:1}
+    for i in a:
+        index += 1
+        if i == first:
+            groop_index[key_index] += 1
+        else:
+            key_index = index
+            groop_index[key_index] = 1
+        first = i
+    sorted_tupl = max(groop_index.items(),key= lambda x:x[1])
+    print(sorted_tupl[0])
+
+
+
+
 
 
 # seq28(iter(0, 1, 0, 1))   # 1
-# seq28(iter(0, 1, 1, 1))   # 2
+# seq28(iter(0, 1, 1, 1, 0))   # 2
 # seq28(iter(1, 0, 1, 1))   # 3
 
 
@@ -571,7 +588,7 @@ def seq28(a):
 
 
 def seq29(a):
-    pass
+    sum_digit = next(a)
 
 
 # seq29(iter(0, 1, 0, 1))   # 4
@@ -603,10 +620,23 @@ def seq30(a):
 
 
 def seq31(a):
-    pass
+    first = next(a)
+    second = next(a)
+    index = 3
+    for i in a:
+        if i != second + first:
+            print(index)
+            return
+        else:
+            first = second
+            second = i
+        index += 1
+    print(0)
 
 
-#
+
+
+
 # seq31(iter(1, 1, 2, 3, 5))   # 0
 # seq31(iter(5, 6, 11, 17, 18))   # 5
 # seq31(iter(1, 1, 1, 1))   # 3
@@ -645,5 +675,4 @@ def seq33(a, k):
 
 
 # seq33(iter(10, 9, 8, 7, 7, 7, 5, 5), 5)   # 6
-"""Дана целочисленная последовательность a.
-Выведите все элементы последовательности."""
+

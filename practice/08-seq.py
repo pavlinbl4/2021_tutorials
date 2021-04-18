@@ -604,7 +604,16 @@ def seq29(a):
 
 
 def seq30(a):
-    pass
+    index = 1
+    all_befor = next(a)
+    for i in a:
+        index += 1
+        if i != all_befor:
+            print(index)
+            return
+        else:
+            all_befor += i
+    print(0)
 
 
 # seq30(iter(3, 3, 6, 12))   # 0
@@ -670,9 +679,24 @@ def seq32(a):
 и при этом больше 0."""
 
 
-def seq33(a, k):
-    pass
+def seq33(a, k):  # что-то много переменных создал
+    index = 0
+    count = 0
+    k_digit = 0
+    for i in a:
+        index += 1
+        if i > 0:
+            count += 1
+        if index == k:
+            k_digit = i
+            for j in a:
+                if j == k_digit and j > 0:
+                    count += 1
+    print(count)
+
 
 
 # seq33(iter(10, 9, 8, 7, 7, 7, 5, 5), 5)   # 6
+# seq33(iter(3, 2, 1, 0, 0), 5)   # 3
+# seq33(iter(0, 0, 0, 0), 2) # 0
 

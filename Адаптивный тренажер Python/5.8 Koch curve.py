@@ -10,7 +10,7 @@ n = 3
 
 
 def main_way(ln):
-    if ln > ln // n:
+    if ln > 200:
         ln3 = ln // 3
         main_way(ln3)
         t.lt(60)

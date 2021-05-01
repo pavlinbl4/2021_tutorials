@@ -5,9 +5,21 @@
 оставшиеся элементы предпоследнего столбца и т. д.; последним выводится элемент .
 """
 
-m = 5
+m = 4
 arr = [[i + j * m for i in range(m)] for j in range(m)]
 for i in arr:
     print("\t".join(map(str, i)))
 print("=" * 50)
+
+
+
+
+for x in range(m):
+    for i in range(m - x):
+        print(arr[x][i],end=' ')
+    print("   ",end='')
+    for i in range(1 + x,m):
+        print(arr[i][m - 1 - x],end=' ')
+    print()
+
 

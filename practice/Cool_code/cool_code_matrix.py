@@ -10,9 +10,9 @@ def create_matrix1(m, n):
     return [[j * 10 for i in range(m)] for j in range(n)]
 
 
-# a = create_matrix1(3,5)
-# for i in a:
-#     print(i)
+a = create_matrix1(3,5)
+for i in a:
+    print(i)
 
 
 # Matrix2

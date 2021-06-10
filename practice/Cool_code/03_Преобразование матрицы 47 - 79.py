@@ -10,7 +10,7 @@ def answer(arr):
     decoration()
 
 
-arr = [[17, 3, 10, 42, 12], [9, 11, 23, 47, 43], [59, 18, 49, 25, 39], [49, 33, 28, 63, 38]]
+arr = [[17, 3, -10, -42, 12], [9, 11, 23, 47, -43], [59, 18, 49, 25, 39], [49, 33, 28, 63, 38]]
 row = 4
 col = 5
 k1 = 1
@@ -105,4 +105,56 @@ def transform_matrix_51(arr, row, col):
 
 
 # transform_matrix_51(arr, row, col)
+
+"""Matrix52. Дана матрица. 
+Поменять местами столбцы, содержащие минимальный и максимальный элементы матрицы."""
+
+def transform_matrix_52(arr, row, col):
+    max_digit = arr[0][0]
+    min_digit = arr[0][0]
+    for i in range(row):
+        for j in range(col):
+            if arr[i][j] > max_digit:
+                max_digit = arr[i][j]
+            if arr[i][j] < min_digit:
+                min_digit = arr[i][j]
+    print("Matrix52")
+    print(f'максимальное и минимальное значение в матрице {max_digit}, {min_digit}')
+    for j in range(col):
+        for i in range(row):
+            if arr[i][j] == max_digit:
+                max_digit = j
+            if arr[i][j] == min_digit:
+                min_digit = j
+    print(f'номера столбцов для обмена {max_digit}, {min_digit}')
+    for i in range(row):
+        arr[i][min_digit],arr[i][max_digit] = arr[i][max_digit],arr[i][min_digit]
+    answer(arr)
+
+# transform_matrix_52(arr, row, col)
+
+"""Matrix53. Дана матрица. 
+Поменять местами столбец с номером 1 (для Pythone 0  как я понимаю) и последний из столбцов, 
+содержащих только положительные элементы. Если требуемых столбцов нет, то вывести матрицу без изменений."""
+
+def transform_matrix_53(arr, row, col):
+    col_index = col - 1
+    x= 0
+    for j in range(col - 1, 0, -1):
+        for i in range(row):
+            x = (arr[i][j])
+            if arr[i][j] < 0:
+                col_index -= 1
+                break
+    if col_index != 0:
+        for i in range(row):
+            arr[i][0], arr[i][col_index] = arr[i][col_index], arr[i][0]
+    print("Matrix53")
+    answer(arr)
+
+transform_matrix_53(arr, row, col)
+
+
+
+
 

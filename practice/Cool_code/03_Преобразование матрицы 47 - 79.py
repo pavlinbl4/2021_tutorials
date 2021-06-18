@@ -182,6 +182,23 @@ def transform_matrix_54(arr, row, col, k):
 
 
 
+"""Matrix55. 
+Дана матрица размера (row — четное число). 
+Поменять местами верхнюю и нижнюю половины матрицы."""
+
+
+def transform_matrix_55(arr, row, col):
+    half = int(row/2)
+    for x in range(half):
+        # arr[x],arr[row - x -1] = arr[row - x -1],arr[x] # меняем верхнюю с нижней, вторую с предпоследней
+        arr[x], arr[half + x] = arr[half + x], arr[x] # замена именно половин
+    print("Matrix55")
+    answer(arr)
+
+# transform_matrix_55(arr, row, col)
+
+
+
 
 
 

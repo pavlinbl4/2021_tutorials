@@ -10,7 +10,7 @@ def answer(arr):
     decoration()
 
 
-arr = [[17, 3, -10, -42, 12], [9, 11, 23, 47, -43], [59, 18, 49, 25, 39], [49, 33, 28, 63, 38]]
+arr = [[17, 3, -10, -42, 12], [9, 11, -23, 47, -43], [59, 18, -49, 25, 39], [49, 33, -28, 63, 38]]
 row = 4
 col = 5
 k1 = 1
@@ -142,7 +142,6 @@ def transform_matrix_53(arr, row, col):
     x= 0
     for j in range(col - 1, 0, -1):
         for i in range(row):
-            x = (arr[i][j])
             if arr[i][j] < 0:
                 col_index -= 1
                 break
@@ -152,7 +151,35 @@ def transform_matrix_53(arr, row, col):
     print("Matrix53")
     answer(arr)
 
-transform_matrix_53(arr, row, col)
+# transform_matrix_53(arr, row, col)
+
+"""Matrix54. Дана матрица. 
+Поменять местами столбец с номером K и первый из столбцов, 
+содержащих только отрицательные элементы. 
+Если требуемых столбцов нет, то вывести матрицу без изменений."""
+
+def transform_matrix_54(arr, row, col, k):
+    negativ_col_index = 0 # индекс первого столбца который может содержать все отрицательные элементы
+    for j in range(col):
+        count = 0
+        for i in range(row):
+            if arr[i][j] >= 0:
+                break
+            else:
+                negativ_col_index = j
+                count += 1
+        if count == row:
+            print(negativ_col_index)
+            for i in range(row):
+                arr[i][k], arr[i][negativ_col_index] = arr[i][negativ_col_index], arr[i][k]
+
+
+    print("Matrix54")
+    answer(arr)
+
+
+# transform_matrix_54(arr, row, col, 1)
+
 
 
 

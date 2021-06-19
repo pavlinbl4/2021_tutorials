@@ -10,7 +10,7 @@ def answer(arr):
     decoration()
 
 
-arr = [[17, 3, -20, -12, 12], [9, 11, -23, 47, -43], [59, 18, -49, 25, 39], [49, 33, -28, 63, 38]]
+arr = [[17, 3, -20, -12, 12], [9, 3, -23, 47, -43], [59, 3, -49, 25, 39], [49, 3, -28, 63, 38]]
 row = 4
 col = 5
 k1 = 1
@@ -40,3 +40,26 @@ def analize_matrix29(arr,row,col):
 
 
 # analize_matrix29(arr,row,col)
+
+
+"""Matrix30. 
+Дана матрица. 
+В каждом ее столбце найти количество элементов, больших среднего арифметического всех элементов этого столбца."""
+
+def analize_matrix30(arr,row,col):
+    print("Matrix30")
+    average_in_column = 0
+    for j in range(col):
+        col_elems = [0] * row
+        for i in range(row):
+            col_elems[i] = arr[i][j]
+        average_in_column = sum(col_elems) / row
+        count = 0
+        for digit in col_elems:
+            if digit > average_in_column:
+                count += 1
+        print(f' количество искомых элементов в столбце {j} - {count}')
+        print(col_elems, average_in_column)
+
+
+# analize_matrix30(arr,row,col)

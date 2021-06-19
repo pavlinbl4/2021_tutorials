@@ -63,3 +63,22 @@ def analize_matrix30(arr,row,col):
 
 
 # analize_matrix30(arr,row,col)
+
+
+"""Matrix31. Дана матрица. 
+Найти номера строки и столбца для элемента матрицы, наиболее близкого к среднему значению всех ее элементов."""
+
+def analize_matrix31(arr,row,col):
+    print("Matrix31")
+    sum_all_elements = 0
+    for i in arr:
+        sum_all_elements += sum(i)
+    matrix_everage = sum_all_elements / (col * row)
+    print(matrix_everage)
+    answer = 0
+    for i in range(row):
+        for i in range(col):
+            if abs(arr[i][j] - matrix_everage) == 0:
+                print(f'координаты искомого значения -  ')
+
+analize_matrix31(arr,row,col)

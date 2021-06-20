@@ -11,8 +11,10 @@ def answer(arr):
 
 
 arr = [[17, 3, -10, -42, 12], [9, 11, -23, 47, -43], [59, 18, -49, 25, 39], [49, 33, -28, 63, 38]]
+arr2 = [[17, 3, -10, -42, 12, 4], [9, 11, -23, 47, -43,5], [59, 18, -49, 25, 39,7], [49, 33, -28, 63, 38,8]]
 row = 4
 col = 5
+col2 = 6
 k1 = 1
 k2 = 4
 print("input matrix")
@@ -198,6 +200,27 @@ def transform_matrix_55(arr, row, col):
 # transform_matrix_55(arr, row, col)
 
 
+"""Matrix56.
+Дана матрица размера ( col — четное число). Поменять местами левую и правую половины матрицы."""
+def transform_matrix_56(arr2, row, col2):
+    half = col2//2
+    for i in range(row):
+        for j in range(half):
+            x = arr2[i][j]
+            y = arr2[i][half + j]
+            arr2[i][j],arr2[i][half + j] = arr2[i][half + j],arr2[i][j]
+
+
+    print("Matrix56")
+    answer(arr2)
+
+
+
+# transform_matrix_56(arr2, row, col2) # для проверки в строке 21 изменить arr на arr2
+
+
+"""Matrix57.
+ Дана матрица размера (  col  row  — четные числа). Поменять местами левую верхнюю и правую нижнюю четверти матрицы."""
 
 
 

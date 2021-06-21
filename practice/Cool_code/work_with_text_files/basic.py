@@ -151,3 +151,44 @@ def text10(file1,k):
 
 # text10('file_for_9.txt',2)
 
+"""Text11. 
+Дан текстовый файл. Продублировать в нем все пустые строки."""
+
+def text11(file):
+    with open(file, 'r') as all_text:
+        all_lines = all_text.readlines()
+    with open(file, 'w') as all_text:
+        for line in all_lines:
+            all_text.write(line)
+            if not line.strip():
+                all_text.write('\n')
+
+
+# text11('text_11.txt')
+
+
+"""Text12. 
+Дана строка S и текстовый файл. Заменить в файле все пустые строки на строку S."""
+def text12(file,s):
+    with open(file,'r') as text:
+        lines = text.readlines()
+    with open('file12.txt','w') as new_txt:
+        for line in lines:
+            if line.isspace():
+                new_txt.write(s)
+            new_txt.write(line)
+
+
+# text12('text_11.txt','***************************')
+
+
+"""Text13. 
+Дан непустой текстовый файл. Удалить из него первую строку."""
+def text13(file):
+    with open(file,'r') as text_file:
+        cut_lines = text_file.readlines()[1:]
+    with open('file13.txt','w') as new_text:
+        for line in cut_lines:
+            new_text.write(line)
+
+# text13('main.txt')

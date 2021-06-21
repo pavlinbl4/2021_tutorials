@@ -18,7 +18,7 @@ col2 = 6
 k1 = 1
 k2 = 4
 print("input matrix")
-answer(arr)
+answer(arr2)
 
 """Matrix47.
 Дана матрица размера col*row и целые числа k1 и k2.
@@ -206,8 +206,6 @@ def transform_matrix_56(arr2, row, col2):
     half = col2//2
     for i in range(row):
         for j in range(half):
-            x = arr2[i][j]
-            y = arr2[i][half + j]
             arr2[i][j],arr2[i][half + j] = arr2[i][half + j],arr2[i][j]
 
 
@@ -221,6 +219,17 @@ def transform_matrix_56(arr2, row, col2):
 
 """Matrix57.
  Дана матрица размера (  col  row  — четные числа). Поменять местами левую верхнюю и правую нижнюю четверти матрицы."""
+def transform_matrix_57(arr2, row, col2):
+    half_col = col2 // 2
+    half_row = row // 2
+    for i in range(half_row):
+        for j in range(half_col):
+            arr2[i][j],arr2[half_row + i][half_col +j] = arr2[half_row + i][half_col +j],arr2[i][j]
+
+    print("Matrix57")
+    answer(arr2)
+
+# transform_matrix_57(arr2, row, col2)
 
 
 

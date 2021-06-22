@@ -62,7 +62,6 @@ def text4(name):
 
 def text5(name, add_line):
     with open(f'{name}.txt', 'a') as tutorial:
-        # print(file=tutorial)
         print(add_line, file=tutorial)
 
 # text5('song','Федор Чистяков')
@@ -192,3 +191,109 @@ def text13(file):
             new_text.write(line)
 
 # text13('main.txt')
+
+"""Text14. 
+Дан непустой текстовый файл. Удалить из него последнюю строку."""
+def text14(file):
+    with open(file,'r') as text_file:
+        cut_lines = text_file.readlines()[:-1]
+    with open('file14.txt','w') as new_text:
+        for line in cut_lines:
+            new_text.write(line)
+
+# text14('main.txt')
+
+
+"""Text15. 
+Дано целое число  K и текстовый файл. 
+Удалить из файла строку с номером . 
+Если строки с таким номером нет, то оставить файл без изменений."""
+
+def text15(file, k):
+    with open(file, 'r') as text_file:
+        all_lines = text_file.readlines()
+    if k < len(all_lines):
+        all_lines.pop(k-1)
+        with open(file, 'w') as text_file:
+            for line in all_lines:
+                text_file.write(line)
+
+# text15('file12.txt', 8)
+
+
+"""Text16. 
+Дан текстовый файл. Удалить из него все пустые строки."""
+
+def text16(file):
+    with open(file, 'r') as text_file:
+        all_lines = text_file.readlines()
+    with open(file, 'w') as text_file:
+        for line in all_lines:
+            if not line.isspace():
+                text_file.write(line)
+
+# text16('16.txt')
+
+"""Text17. 
+Даны два текстовых файла. 
+Добавить в конец каждой строки первого файла соответствующую строку второго файла. 
+Если второй файл короче первого, то оставшиеся строки первого файла не изменять."""
+
+def text17(file1,file2):
+    with open(file1,'r') as first_text:
+        first_lines = first_text.readlines()
+    with open(file2, 'r') as second_text:
+        second_lines = second_text.readlines()
+
+    f_length = len(first_lines)
+    s_lenght = len(second_lines)
+    k = f_length
+    if f_length > s_lenght:
+        k = s_lenght
+    append = first_lines[k:]
+
+    with open('17.txt', 'w') as new_text:
+        for i in range(k):
+            new_text.write(first_lines[i])
+            new_text.write(second_lines[i])
+        for lines in append:
+            new_text.write(lines)
+
+
+# text17('song.txt','16.txt')
+"""Text18. 
+Дано целое число и текстовый файл. 
+Удалить из каждой строки файла первые символов (если длина строки меньше , то удалить из нее все символы)."""
+def text18(file,k):
+    with open(file, 'r') as text:
+        lines = text.readlines()
+    with open('18.txt', 'w') as new_text:
+        for line in lines:
+            new_text.write(line[k:])
+
+# text18('song.txt',15)
+
+"""Text19. 
+Дан текстовый файл. 
+Заменить в нем все прописные русские буквы на строчные, 
+а все строчные — на прописные."""
+
+def text19(file):
+    with open(file, 'r') as text:
+        lines = text.readlines()
+    with open('19.txt', 'w') as new_text:
+        for line in lines:
+            new_text.write(line.swapcase())
+
+# text19('song.txt')
+
+"""Text20. 
+Дан текстовый файл. Заменить в нем все подряд идущие пробелы на один пробел."""
+def text19(file):
+    with open(file, 'r') as text:
+        lines = text.readlines()
+    # with open('20.txt', 'w') as new_text:
+    #     for line in lines:
+
+
+text19('many_spaces.txt')

@@ -1,3 +1,5 @@
+import re
+
 """Text1.
 Дано имя файла и целые положительные числа N и  K.
 Создать текстовый файл с указанным именем и записать в него N строк,
@@ -199,7 +201,7 @@ def text14(file):
         cut_lines = text_file.readlines()[:-1]
     with open('file14.txt','w') as new_text:
         for line in cut_lines:
-            new_text.write(line)
+            new_text.write(line + '\n')
 
 # text14('main.txt')
 
@@ -289,11 +291,56 @@ def text19(file):
 
 """Text20. 
 Дан текстовый файл. Заменить в нем все подряд идущие пробелы на один пробел."""
-def text19(file):
+def text20(file):
     with open(file, 'r') as text:
         lines = text.readlines()
-    # with open('20.txt', 'w') as new_text:
-    #     for line in lines:
+    with open('20.txt', 'w') as new_text:
+        for line in lines:
+            # optimised = re.sub('\s+', ' ', line) # через регулярные выражения
+            line = line.split()
+            optimised = " ".join(line)
+            # print(optimised, file=new_text)
+            new_text.write(optimised + '\n')
 
 
-text19('many_spaces.txt')
+# text20('many_spaces.txt')
+
+"""Text21. 
+Дан текстовый файл, содержащий более трех строк. 
+Удалить из него последние три строки."""
+def text21(file):
+    with open(file, 'r') as text:
+        lines = text.readlines()
+    cutted_text = lines[:-3]
+    with open('21.txt', 'w') as new_text:
+        for line in cutted_text:
+         new_text.write(line)
+
+# text21("17.txt")
+
+"""Text22. 
+Дано целое число K и текстовый файл, содержащий более  K строк. Удалить из файла K последние строк."""
+def text22(file,k):
+    with open(file, 'r') as text:
+        lines = text.readlines()
+    cutted_text = lines[: - k]
+    with open('22.txt', 'w') as new_text:
+        for line in cutted_text:
+         new_text.write(line)
+
+# text22("17.txt", 8)
+
+"""Text23. 
+Дано целое число  K и текстовый файл, содержащий более K строк. 
+Создать новый текстовый файл, K содержащий последних строк исходного файла."""
+
+def text23(file,k):
+    with open(file, 'r') as text:
+        lines = text.readlines()
+    cutted_text = lines[-k:]
+    with open('23.txt', 'w') as new_text:
+        for line in cutted_text:
+         new_text.write(line)
+
+# text23("17.txt", 4)
+

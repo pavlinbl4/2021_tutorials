@@ -11,7 +11,7 @@ def start_matrix(row, col):
 row = 3
 col = 5
 arr = start_matrix(row, col)
-arr = [[99, 1, 2, 3, 4], [5, 6, 7, 8, 9], [10, 11, 12, 13, 14]]
+arr = [[99, 1, 2, 3, 4], [5, 6, 22, 8, 9], [10, 11, 12, 13, 7]]
 
 print("исходная матрица")
 for i in arr:
@@ -139,4 +139,44 @@ for j in range(col):
 sorte_tupl = max(answer.items(), key = lambda item:item[1])
 print(f'номер столбца - {sorte_tupl[0]}')
 print(f'произведение элементов столбца - {sorte_tupl[1]}')
+decoration()
+
+
+# Matrix27.
+"""Дана матрица. 
+Найти максимальный среди минимальных элементов ее строк."""
+print("Matrix27")
+answer = [0] * row
+
+for i in range(row):
+    answer[i] = min(arr[i])
+print(max(answer))
+decoration()
+
+# Matrix28.
+"""Дана матрица. 
+Найти минимальный среди максимальных элементов ее столбцов."""
+print("Matrix28")
+answer = [0] * col
+col_elem = [0] * row
+
+for j in range(col):
+    pr = 1
+    for i in range(row):
+        col_elem[i] = arr[i][j]
+    answer[j] = max(col_elem)
+print(answer)
+print(min(answer))
+decoration()
+
+
+
+
+
+
+
+
+
+
+
 

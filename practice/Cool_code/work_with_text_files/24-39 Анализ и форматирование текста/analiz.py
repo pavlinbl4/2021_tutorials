@@ -288,3 +288,27 @@ def analize37(file):
 
 
 # analize37('36_input.txt')
+
+
+"""Text38. 
+Дано целое число K > 25 и текстовый файл, содержащий текст, выровненный по левому краю. 
+Абзацы текста отделяются друг от друга одной пустой строкой. 
+Отформатировать текст так, чтобы его ширина не превосходила позиций, и выровнять текст по левому краю, 
+сохранив деление на абзацы. Пробелы в конце строк удалить. 
+Сохранить отформатированный текст в новом текстовом файле."""
+
+def analize38(file,k):
+    def perenos(line, k):
+        words = line.split()
+        words_count = len(words)
+        while
+
+
+    with open(file, 'r') as text_in, open('38.txt', 'w') as text_out:
+        for line in text_in:
+            if len(line) <= k or line.strip() == 0:
+                text_out.write(line)
+            else:
+                perenos(line, k)
+analize38("28.txt",30)
+
